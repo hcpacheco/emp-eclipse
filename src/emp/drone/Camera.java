@@ -17,4 +17,10 @@ public class Camera {
 		}
 		return faceReconhecida;
     }
+    
+    public boolean DetectaObjetoPerigoso()
+    {
+    	
+    }
+    
 }
