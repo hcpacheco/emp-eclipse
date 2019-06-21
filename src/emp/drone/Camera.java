@@ -2,29 +2,19 @@ package emp.drone;
 
 import java.util.List;
 
-import emp.persistencia.Civil;
-import emp.persistencia.Detento;
+import emp.persistencia.Pessoa;
 
 public class Camera {
-	
-	private boolean FaceReconhecida;
-	
-	public boolean reconhecerFace (List<Pessoa> civis, List<Detento> detentos, String nomeParaReconhecer)
-
-	{
-		for(int i=0; i <= civis.size();i++)
-			if(civis.get(i).getNome() == nomeParaReconhecer)
-				FaceReconhecida = true;
-			else
-				FaceReconhecida = false;
-		
-		for (int j=0; j <= detentos.size();j++)
-			if(detentos.get(j).getNome() == nomeParaReconhecer)
-				FaceReconhecida = true;
-			else
-				FaceReconhecida = false;
-		
-		return FaceReconhecida;
-		
-	}
+	private boolean faceReconhecida;
+    
+    public boolean reconhecerFoto(String nome, List<Pessoa> pessoas) {
+		for(int i = 0; i <= pessoas.size(); i++) {
+    		if(pessoas.get(i).getNome() == nome) {
+    			faceReconhecida = true;			
+    		}
+    		else 
+    			faceReconhecida = false;	
+		}
+		return faceReconhecida;
+    }
 }
