@@ -17,7 +17,7 @@ public class ControleEmpSingleton {
 	{
 		//INICIALIZACAO DE BUSINESS
 		//(Notificacao n, List<ZonaDePatrulha> z)	
-		this.b = new Business(this.d.getZonas());
+		this.b = new Business();
 	}
 
 

@@ -137,8 +137,7 @@ public class Simulacao {
 		DAOEmp d = new DAOEmp(listap, listac, listad, listao, listaz);
 		
 		//Inicialização de ControleEmpSingleton
-		ControleEmpSingleton controle = ControleEmpSingleton.getInstance();
-		controle.setDAO(d);
+		ControleEmpSingleton.getInstance().setDAO(d);
 		
 		//NONATO
 	}

@@ -9,10 +9,9 @@ public class Business {
 	private Notificacao notificacao; // = new Notificacao();
 	private List<ZonaDePatrulha> zonas; // = new ZonaDePatrulha();
 
-	public Business(List<ZonaDePatrulha> z) {
+	public Business() {
 		super();
 		this.notificacao = new Notificacao();
-		this.setZonas(z);
 	}
 
 	public void setZonas(List<ZonaDePatrulha> zonas) {
