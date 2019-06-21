@@ -9,7 +9,7 @@ public class Camera {
 	
 	private boolean FaceReconhecida;
 	
-	public boolean reconhecerFace (List<Civil> civis, List<Detento> detentos, String nomeParaReconhecer)
+	public boolean reconhecerFace (List<Pessoa> civis, List<Detento> detentos, String nomeParaReconhecer)
 
 	{
 		for(int i=0; i <= civis.size();i++)

@@ -6,9 +6,9 @@ public class Drone {
     private double posy;
     private String status;
     private boolean disponivel;
-    private List<Detectados> detectados;
+    private List<Pessoa> detectados;
     
-    public List<Detectados> statusPatrulha(){
+    public List<Pessoa> statusPatrulha(){
 
     }
 
