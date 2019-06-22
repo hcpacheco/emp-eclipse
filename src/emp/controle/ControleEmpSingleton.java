@@ -6,8 +6,8 @@ import emp.persistencia.DAOEmp;
 import emp.persistencia.ZonaDePatrulha;
 
 public class ControleEmpSingleton {
-	private Business b;// = new Business();
-	private DAOEmp d;// = new DAOEmp()
+	private Business b;
+	private DAOEmp d;
 
 	// Instancia singleton de ControleEmp
 	private static final ControleEmpSingleton instance = new ControleEmpSingleton();
@@ -22,6 +22,7 @@ public class ControleEmpSingleton {
 	public void setDAO(DAOEmp d) {
 		this.d = d;
 		this.b.setZonas(d.getZonas());
+		this.b.setUsuarios(d.getUsuarios());
 	}
 
 	public static ControleEmpSingleton getInstance() {

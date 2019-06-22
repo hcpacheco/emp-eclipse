@@ -8,12 +8,11 @@ public class DAOEmp {
 	private List<Detento> detentos;
 	private List<ObjetoPerigoso> objetos;
 	private List<ZonaDePatrulha> zonas;
-	
-	public List<Policial> getUsuarios() 
-	{
+
+	public List<Policial> getUsuarios() {
 		return usuarios;
 	}
-	
+
 	public List<ZonaDePatrulha> getZonas() {
 		return zonas;
 	}
@@ -22,42 +21,36 @@ public class DAOEmp {
 		this.zonas = zonas;
 	}
 
-	public void setUsuarios(List<Policial> usuarios) 
-	{
+	public void setUsuarios(List<Policial> usuarios) {
 		this.usuarios = usuarios;
 	}
-	
-	public List<Civil> getCivis() 
-	{
+
+	public List<Civil> getCivis() {
 		return civis;
 	}
 
-	public void setCivis(List<Civil> civis) 
-	{
+	public void setCivis(List<Civil> civis) {
 		this.civis = civis;
 	}
-	
-	public List<Detento> getDetentos() 
-	{
+
+	public List<Detento> getDetentos() {
 		return detentos;
 	}
-	
-	public void setDetentos(List<Detento> detentos) 
-	{
+
+	public void setDetentos(List<Detento> detentos) {
 		this.detentos = detentos;
 	}
-	
-	public List<ObjetoPerigoso> getObjetos() 
-	{
+
+	public List<ObjetoPerigoso> getObjetos() {
 		return objetos;
 	}
-	
-	public void setObjetos(List<ObjetoPerigoso> objetos) 
-	{
+
+	public void setObjetos(List<ObjetoPerigoso> objetos) {
 		this.objetos = objetos;
 	}
-	
-	public DAOEmp(List<Policial> usuarios, List<Civil> civis, List<Detento> detentos, List<ObjetoPerigoso> objetos, List<ZonaDePatrulha> zonas) {
+
+	public DAOEmp(List<Policial> usuarios, List<Civil> civis, List<Detento> detentos, List<ObjetoPerigoso> objetos,
+			List<ZonaDePatrulha> zonas) {
 		super();
 		this.setUsuarios(usuarios);
 		this.setCivis(civis);
@@ -65,6 +58,5 @@ public class DAOEmp {
 		this.setObjetos(objetos);
 		this.setZonas(zonas);
 	}
-	
-	
+
 }

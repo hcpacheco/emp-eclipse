@@ -136,7 +136,7 @@ public class Simulacao {
 		// List<ObjetoPerigoso> objetos)
 		DAOEmp d = new DAOEmp(listap, listac, listad, listao, listaz);
 		
-		//Inicialização de ControleEmpSingleton
+		//Inicialização de ControleEmpSingleton db
 		ControleEmpSingleton.getInstance().setDAO(d);
 		
 		

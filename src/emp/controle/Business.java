@@ -2,17 +2,24 @@ package emp.controle;
 
 import java.util.List;
 
+import emp.persistencia.Policial;
 import emp.persistencia.ZonaDePatrulha;
 
 public class Business {
 
 	private Notificacao notificacao;
-	private List<ZonaDePatrulha> zonas; 
+	private List<ZonaDePatrulha> zonas;
+	private List<Policial> usuarios;
 
 	public Business() {
 		super();
 		this.notificacao = new Notificacao();
 		this.setZonas(null);
+		this.setUsuarios(null);
+	}
+
+	public void setUsuarios(List<Policial> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 	public void setZonas(List<ZonaDePatrulha> zonas) {
@@ -30,16 +37,21 @@ public class Business {
 		}
 	}
 
-	public void enviaParaDrone(int id, String msg) {
-		notificacao.enviaMsg(id, msg);
-	}
-
-	public void enviaParaTornozeleira() {
-
+	public void enviaMsg(int idDst, String msg) {
+		notificacao.enviaMsg(idDst, msg);
 	}
 
 	public boolean validar(String usuario, String senha) {
-		return true;
+		for (int i = 0; i < usuarios.size(); i++) {
+			if (usuarios.get(i).getUsuario() == usuario) {
+				if (usuarios.get(i).getSenha() == senha) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+		return false;
 	}
 
 }

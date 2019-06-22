@@ -25,6 +25,7 @@ public class LoginUI {
 
 	/**
 	 * Launch the application.
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -59,28 +60,28 @@ public class LoginUI {
 		shell.setSize(450, 300);
 		shell.setText("EMP Controle");
 		shell.setLayout(null);
-		
+
 		Label lblEcossistemaDeMonitoramento = new Label(shell, SWT.NONE);
 		lblEcossistemaDeMonitoramento.setBounds(73, 45, 283, 20);
 		lblEcossistemaDeMonitoramento.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.BOLD));
 		lblEcossistemaDeMonitoramento.setText("Ecossistema de Monitoramento Policial");
-		
+
 		Label lblNewLabel = new Label(shell, SWT.NONE);
 		lblNewLabel.setBounds(37, 113, 57, 15);
 		lblNewLabel.setText("Usu\u00E1rio :");
-		
+
 		text = new Text(shell, SWT.BORDER);
 		text.setBounds(118, 110, 220, 21);
-		
+
 		Label lblNewLabel_1 = new Label(shell, SWT.NONE);
 		lblNewLabel_1.setBounds(37, 159, 49, 15);
 		lblNewLabel_1.setText("Senha :");
-		
+
 		text_1 = new Text(shell, SWT.BORDER | SWT.PASSWORD);
 		text_1.addKeyListener(new KeyAdapter() {
 		});
 		text_1.setBounds(118, 156, 220, 21);
-		
+
 		btnNewButton = new Button(shell, SWT.NONE);
 
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -91,6 +92,7 @@ public class LoginUI {
 				System.out.println(name);
 				System.out.println(pw);
 			}
+
 			@Override
 			public void mouseDoubleClick(MouseEvent e) {
 				shell.close();
