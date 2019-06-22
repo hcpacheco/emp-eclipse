@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.eclipse.swt.widgets.Display;
+
 import emp.LoginUI;
 import emp.controle.ControleEmpSingleton;
 import emp.persistencia.Civil;
@@ -15,7 +17,7 @@ import emp.persistencia.Policial;
 import emp.persistencia.Sexo;
 import emp.persistencia.ZonaDePatrulha;
 
-public class SimulacaoControle {
+public class SimulacaoControle{
 
 	public static void main(String[] args) {
 		// inicializacao de 'Banco de Dados'
@@ -143,7 +145,6 @@ public class SimulacaoControle {
 		LoginUI window = new LoginUI();
 		window.open();
 		
-		
-		}
+	} 
 
 }

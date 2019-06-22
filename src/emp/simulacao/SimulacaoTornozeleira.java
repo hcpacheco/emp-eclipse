@@ -1,10 +1,17 @@
 package emp.simulacao;
 
-public class SimulacaoTornozeleira {
+import org.eclipse.swt.widgets.Display;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+import emp.DroneUI;
+import emp.TornozeleiraUI;
 
+public class SimulacaoTornozeleira{
+
+	public static void main(String[] args){
+		DroneUI window = new DroneUI();
+		window.open();
 	}
+
+		
 
 }

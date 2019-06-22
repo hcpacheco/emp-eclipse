@@ -18,6 +18,7 @@ import emp.controle.ControleEmpSingleton;
 
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.widgets.Menu;
 
 public class LoginUI {
 
@@ -25,6 +26,8 @@ public class LoginUI {
 	private Text text;
 	private Text text_1;
 	private Button btnNewButton;
+	private Label lblBemVindoa;
+	private boolean tentativa;
 
 	/**
 	 * Launch the application.
@@ -74,6 +77,13 @@ public class LoginUI {
 		lblNewLabel.setText("Usu\u00E1rio :");
 
 		text = new Text(shell, SWT.BORDER);
+		text.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				lblBemVindoa.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+				lblBemVindoa.setText("Bem vindo(a)!");
+			}
+		});
 		text.setBounds(118, 110, 220, 21);
 
 		Label lblNewLabel_1 = new Label(shell, SWT.NONE);
@@ -81,6 +91,13 @@ public class LoginUI {
 		lblNewLabel_1.setText("Senha :");
 
 		text_1 = new Text(shell, SWT.BORDER | SWT.PASSWORD);
+		text_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				lblBemVindoa.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+				lblBemVindoa.setText("Bem vindo(a)!");
+			}
+		});
 		text_1.addKeyListener(new KeyAdapter() {
 		});
 		text_1.setBounds(118, 156, 220, 21);
@@ -94,14 +111,16 @@ public class LoginUI {
 				String pw = text_1.getText();
 				System.out.println(name);
 				System.out.println(pw);
-				if(ControleEmpSingleton.getInstance().validarSenha(name, pw))
-				{
+				if (ControleEmpSingleton.getInstance().validarSenha(name, pw)) {
 					shell.close();
-					
+
 					EmpUI window = new EmpUI();
 					window.open();
+				} else {
+					lblBemVindoa.setText("Login ou senha inválido. Por favor, tente novamente.");
+					lblBemVindoa.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
 				}
-				
+
 			}
 
 			@Override
@@ -111,6 +130,11 @@ public class LoginUI {
 		});
 		btnNewButton.setBounds(174, 205, 75, 25);
 		btnNewButton.setText("Logar");
+		
+		lblBemVindoa = new Label(shell, SWT.BORDER | SWT.WRAP);
+		lblBemVindoa.setText("Bem vindo(a)!");
+		lblBemVindoa.setAlignment(SWT.CENTER);
+		lblBemVindoa.setBounds(10, 71, 414, 25);
 
 	}
 }

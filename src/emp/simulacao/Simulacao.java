@@ -1,17 +1,14 @@
 package emp.simulacao;
 
-import emp.DroneUI;
 import emp.LoginUI;
 import emp.controle.ControleEmpSingleton;
 
-public class SimulacaoDrone{
+public class Simulacao {
 
 	public static void main(String[] args) {
-		DroneUI window = new DroneUI();
-		window.open();
+		
+		SimulacaoControle.main(args);
 
 	}
-	
-
 
 }

@@ -1,9 +1,6 @@
 package emp.controle;
 
-import java.util.List;
-
 import emp.persistencia.DAOEmp;
-import emp.persistencia.ZonaDePatrulha;
 
 public class ControleEmpSingleton {
 	private Business b;
@@ -35,6 +32,14 @@ public class ControleEmpSingleton {
 	
 	public String teste() {
 		return "oi";
+	}
+
+	public DAOEmp getD() {
+		return d;
+	}
+
+	public void setD(DAOEmp d) {
+		this.d = d;
 	}
 
 }
