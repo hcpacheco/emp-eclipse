@@ -139,7 +139,8 @@ public class Simulacao {
 		//Inicialização de ControleEmpSingleton
 		ControleEmpSingleton.getInstance().setDAO(d);
 		
-		//NONATO
-	}
+		
+		
+		}
 
 }
