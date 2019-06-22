@@ -1,13 +1,13 @@
 package emp.drone;
 
+import java.util.concurrent.TimeUnit;
+
+import emp.estacaocarregamento.EstacaoCarregamento;
+
 public class BateriaDrone {
 	  private int carga;
 	  private boolean alertaRecarga;
-	  private int status;
-	  private int NecessitaRecarga = 1;
-	  private int DroneBomStatus = 2;
-	  private int DroneCarregando = 3;
-	  private int DroneCarregado = 4;
+	  private StatusBateria status;
 	  
 	  public void setCarga(int carga) {
 		  this.carga = carga;
@@ -18,29 +18,45 @@ public class BateriaDrone {
 	  }
 	  
 	  public void verificaCarga(int carga) {
-		  if (carga <= 20) 
+		  if (this.carga <= 20) 
 		  {
-			  status = NecessitaRecarga;  //Necessita de Recarga
-		  	  solicitaRecarga(carga);
+			  this.setStatus(StatusBateria.EMERGENCIA);;  //Necessita de Recarga
 		  }
 		  else
-		  		status = DroneBomStatus ; // Drone com boa bateria
+		  {
+			  this.setStatus(StatusBateria.SUFICIENTE); // Drone com boa bateria
+		  }
+		  		
 	  	}
 
-	  public void solicitaRecarga(int carga) {
+	  public boolean solicitaRecarga(int carga, EstacaoCarregamento e) {
 		  
-		  status = DroneCarregando;
-		  carga = 100;
-			  
+		  this.setStatus(StatusBateria.CARREGANDO);
+		  
+		  boolean r = e.carregaDrone(this.carga);
+		  
+		  if(r)
+		  {
+			  //carregamento concluido
+			  this.setStatus(StatusBateria.CARREGADO);
+			  return true;
+		  }
+		  else
+		  {
+			  //erro ao carregar bateria
+			  this.setStatus(StatusBateria.EMERGENCIA);
+			  return false;
+		  }   
 	  }
 
-	  public int finalizaRecarga(int carga) {
-		  
-		  if(carga == 100)
-		  status = DroneCarregado;
-		  
-		  return carga;
-		  
-	  }
+	  public StatusBateria getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusBateria status) {
+		this.status = status;
+	}
+
+
 }
 

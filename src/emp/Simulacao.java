@@ -139,7 +139,7 @@ public class Simulacao {
 		//Inicialização de ControleEmpSingleton
 		ControleEmpSingleton.getInstance().setDAO(d);
 		
-		
+//		System.out.println("Teste");
 		
 		}
 

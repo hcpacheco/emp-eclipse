@@ -1,7 +1,5 @@
 package emp.drone;
 
-import emp.controle.string;
-
 public class NotificacaoDrone {
     private boolean notificacaoDrone;
     private String tipoNotificacao;
