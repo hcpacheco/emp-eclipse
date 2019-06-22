@@ -3,8 +3,12 @@ package emp.drone;
 import java.util.List;
 
 import emp.Mensagem;
+import emp.controle.Notificacao;
 
 public class NotificacaoDrone implements Mensagem{
+	private int id;
+	private Notificacao controle;
+	
     private boolean notificacaoDrone;
     private String tipoNotificacao;
 	private String material;
@@ -22,15 +26,23 @@ public class NotificacaoDrone implements Mensagem{
 	}
 
 	@Override
-	public void enviaMsg(int idComunicador, List<String> msg) {
-		// TODO Auto-generated method stub
-		
+	public boolean enviaMsg(int idDst, String msg) {
+		if(this.controle.getId() == idDst)
+		{
+			this.controle.recebeMsg(msg);
+			return true;
+		}		
+		return false;
 	}
 
 	@Override
 	public List<String> recebeMsg(String m) {
 		this.rx.add(m);
 		return this.getRx();
+	}
+	
+	public int getId() {
+		return id;
 	}
     
    

@@ -21,6 +21,7 @@ public class ControleEmpSingleton {
 
 	public void setDAO(DAOEmp d) {
 		this.d = d;
+		this.b.setZonas(d.getZonas());
 	}
 
 	public static ControleEmpSingleton getInstance() {

@@ -12,6 +12,7 @@ public class Business {
 	public Business() {
 		super();
 		this.notificacao = new Notificacao();
+		this.setZonas(null);
 	}
 
 	public void setZonas(List<ZonaDePatrulha> zonas) {
@@ -29,8 +30,8 @@ public class Business {
 		}
 	}
 
-	public void enviaParaDrone() {
-
+	public void enviaParaDrone(int id, String msg) {
+		notificacao.enviaMsg(id, msg);
 	}
 
 	public void enviaParaTornozeleira() {

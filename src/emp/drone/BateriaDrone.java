@@ -29,7 +29,7 @@ public class BateriaDrone {
 		  		
 	  	}
 
-	  public boolean solicitaRecarga(int carga, EstacaoCarregamento e) {
+	  public boolean solicitaRecarga(EstacaoCarregamento e) {
 		  
 		  this.setStatus(StatusBateria.CARREGANDO);
 		  
