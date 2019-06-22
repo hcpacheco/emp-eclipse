@@ -1,11 +1,11 @@
-package emp.controle;
+package emp.tornozeleira;
 
 import java.util.List;
 
 import emp.Mensagem;
 
-public class Notificacao implements Mensagem
-{
+public class NotificacaoTornozeleira implements Mensagem{
+
 	private List<String> rx;
 
 	public void setRx(List<String> rx) {

@@ -18,5 +18,9 @@ public class Camera {
 		}
 		return faceReconhecida;
     }
-    
+   
+    public ObjetoReconhecido reconhecerObjeto() {
+    	ObjetoReconhecido o = new ObjetoReconhecido();
+    	return o;
+    }
 }

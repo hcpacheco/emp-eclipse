@@ -6,8 +6,8 @@ import emp.persistencia.ZonaDePatrulha;
 
 public class Business {
 
-	private Notificacao notificacao; // = new Notificacao();
-	private List<ZonaDePatrulha> zonas; // = new ZonaDePatrulha();
+	private Notificacao notificacao;
+	private List<ZonaDePatrulha> zonas; 
 
 	public Business() {
 		super();
