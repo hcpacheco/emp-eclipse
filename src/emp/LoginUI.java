@@ -13,6 +13,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
+
+import emp.controle.ControleEmpSingleton;
+
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 
@@ -91,6 +94,14 @@ public class LoginUI {
 				String pw = text_1.getText();
 				System.out.println(name);
 				System.out.println(pw);
+				if(ControleEmpSingleton.getInstance().validarSenha(name, pw))
+				{
+					shell.close();
+					
+					EmpUI window = new EmpUI();
+					window.open();
+				}
+				
 			}
 
 			@Override

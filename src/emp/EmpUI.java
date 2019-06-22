@@ -5,7 +5,14 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
 import org.eclipse.wb.swt.SWTResourceManager;
+
+import emp.controle.ControleEmpSingleton;
+
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 
 public class EmpUI {
 
@@ -65,6 +72,12 @@ public class EmpUI {
 		button.setBounds(10, 85, 133, 25);
 		
 		Button button_1 = new Button(shell, SWT.NONE);
+//		button_1.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseDown(MouseEvent e) {
+//			}
+//		});
+
 		button_1.setText("Verificar Drones");
 		button_1.setBounds(271, 85, 133, 25);
 		

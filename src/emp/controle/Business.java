@@ -42,9 +42,10 @@ public class Business {
 	}
 
 	public boolean validar(String usuario, String senha) {
+		
 		for (int i = 0; i < usuarios.size(); i++) {
-			if (usuarios.get(i).getUsuario() == usuario) {
-				if (usuarios.get(i).getSenha() == senha) {
+			if (usuarios.get(i).getUsuario().equals(usuario)) {
+				if (usuarios.get(i).getSenha().equals(senha)) {
 					return true;
 				} else {
 					return false;

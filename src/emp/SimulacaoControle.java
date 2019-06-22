@@ -14,7 +14,7 @@ import emp.persistencia.Policial;
 import emp.persistencia.Sexo;
 import emp.persistencia.ZonaDePatrulha;
 
-public class Simulacao {
+public class SimulacaoControle {
 
 	public static void main(String[] args) {
 		// inicializacao de 'Banco de Dados'
@@ -138,6 +138,9 @@ public class Simulacao {
 		
 		//Inicialização de ControleEmpSingleton db
 		ControleEmpSingleton.getInstance().setDAO(d);
+		
+		LoginUI window = new LoginUI();
+		window.open();
 		
 		
 		}

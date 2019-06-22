@@ -30,12 +30,11 @@ public class ControleEmpSingleton {
 	}
 
 	public boolean validarSenha(String usuario, String senha) {
-		boolean correto = b.validar(usuario, senha);
-		if (correto) {
-			return true;
-		} else {
-			return false;
-		}
+		return b.validar(usuario, senha);
+	}
+	
+	public String teste() {
+		return "oi";
 	}
 
 }
