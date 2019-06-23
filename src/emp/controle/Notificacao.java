@@ -85,15 +85,13 @@ public class Notificacao implements Mensagem {
 	}
 
 	public int criaNovaTornozeleira() {
-		TornozeleiraFacade t = new TornozeleiraFacade();
-		NotificacaoTornozeleira n = new NotificacaoTornozeleira(this, t, this.tornozeleirasI.size());
+		NotificacaoTornozeleira n = new NotificacaoTornozeleira(this, this.tornozeleirasI.size());
 		this.tornozeleirasI.add(n);
 		return n.getId();
 	}
 
 	public int criaNovoDrone() {
-		DroneFacade d = new DroneFacade();
-		NotificacaoDrone n = new NotificacaoDrone(this, d, this.dronesI.size());
+		NotificacaoDrone n = new NotificacaoDrone(this, this.dronesI.size());
 		this.dronesI.add(n);
 		return n.getId();
 

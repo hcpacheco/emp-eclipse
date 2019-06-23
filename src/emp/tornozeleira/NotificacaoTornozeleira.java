@@ -44,11 +44,11 @@ public class NotificacaoTornozeleira implements Mensagem {
 		return id;
 	}
 
-	public NotificacaoTornozeleira(Notificacao controle, TornozeleiraFacade tornozeleira, int id) {
+	public NotificacaoTornozeleira(Notificacao controle, int id) {
 		super();
 		this.setId(id);
 		this.controle = controle;
-		this.tornozeleira = tornozeleira;
+		this.tornozeleira = new TornozeleiraFacade();
 		this.setRx(null);
 	}
 }

@@ -24,11 +24,11 @@ public class NotificacaoDrone implements Mensagem {
 		return id;
 	}
 
-	public NotificacaoDrone(Notificacao controle, DroneFacade drone, int id) {
+	public NotificacaoDrone(Notificacao controle, int id) {
 		super();
 		this.setId(id);
 		this.controle = controle;
-		this.drone = drone;
+		this.drone = new DroneFacade();
 		this.setRx(null);
 	}
 
