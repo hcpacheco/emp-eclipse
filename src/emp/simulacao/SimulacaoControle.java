@@ -75,10 +75,10 @@ public class SimulacaoControle{
 		Detento detento2 = new Detento("Zé", data1, Sexo.MASCULINO, "1010", posicoes, -1);
 
 		// OBJETOS PERIGOSOS
-		// (String nome, int tamanho)
-		ObjetoPerigoso objeto1 = new ObjetoPerigoso("Faca", 17);
-		ObjetoPerigoso objeto2 = new ObjetoPerigoso("Pistola", 21);
-		ObjetoPerigoso objeto3 = new ObjetoPerigoso("Machado", 50);
+		// (String nome, int tamanho, String material)
+		ObjetoPerigoso objeto1 = new ObjetoPerigoso("Faca", 17, "elipsoidal");
+		ObjetoPerigoso objeto2 = new ObjetoPerigoso("Pistola", 21, "cuboide");
+		ObjetoPerigoso objeto3 = new ObjetoPerigoso("Machado", 50, "torus");
 
 		//ZONAS DE PATRULHA
 		List<Float> latitudes1 = new ArrayList<Float>();

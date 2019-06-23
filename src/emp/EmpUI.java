@@ -70,22 +70,22 @@ public class EmpUI {
 		label_2.setAlignment(SWT.CENTER);
 		label_2.setBounds(10, 101, 394, 25);
 		
-		Button button = new Button(shell, SWT.NONE);
-		button.addSelectionListener(new SelectionAdapter() {
+		Button btnConfigurarDrone = new Button(shell, SWT.NONE);
+		btnConfigurarDrone.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 			}
 		});
-		button.setText("Enviar Drone");
-		button.setBounds(10, 140, 133, 25);
+		btnConfigurarDrone.setText("Configurar Patrulhas");
+		btnConfigurarDrone.setBounds(10, 140, 133, 25);
 		
-		Button button_1 = new Button(shell, SWT.NONE);
-		button_1.addSelectionListener(new SelectionAdapter() {
+		Button btnVerificarPatrulhas = new Button(shell, SWT.NONE);
+		btnVerificarPatrulhas.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 			}
 		});
-		button_1.addMouseListener(new MouseAdapter() {
+		btnVerificarPatrulhas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				DroneUI window = new DroneUI();
@@ -93,8 +93,8 @@ public class EmpUI {
 			}
 		});
 
-		button_1.setText("Verificar Drones");
-		button_1.setBounds(271, 140, 133, 25);
+		btnVerificarPatrulhas.setText("Verificar Patrulhas");
+		btnVerificarPatrulhas.setBounds(271, 140, 133, 25);
 		
 		Label label_3 = new Label(shell, SWT.NONE);
 		label_3.setText("Tornozeleiras");
@@ -109,9 +109,9 @@ public class EmpUI {
 		label_5.setAlignment(SWT.CENTER);
 		label_5.setBounds(10, 247, 394, 25);
 		
-		Button button_4 = new Button(shell, SWT.NONE);
-		button_4.setText("Configurar Detentos");
-		button_4.setBounds(10, 291, 133, 25);
+		Button btnConfigurarTornozeleira = new Button(shell, SWT.NONE);
+		btnConfigurarTornozeleira.setText("Configurar Tornozeleira");
+		btnConfigurarTornozeleira.setBounds(10, 291, 133, 25);
 		
 		Button button_5 = new Button(shell, SWT.NONE);
 		button_5.addMouseListener(new MouseAdapter() {

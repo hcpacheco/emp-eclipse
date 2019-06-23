@@ -32,7 +32,7 @@ public class ObjetoReconhecido {
 		super();
 		
 		List<String> materiaisConhecidos = Arrays.asList("metal", "plástico", "cerâmico");
-		List<Integer> tamanhosConhecidos = Arrays.asList(10, 15, 20, 25, 30, 35, 40, 35, 50, 100, 200);
+		List<Integer> tamanhosConhecidos = Arrays.asList(5, 10, 15, 20, 25, 30, 35, 40, 35, 50, 100, 200);
 		List<String> formatosConhecidos = Arrays.asList("elipsoidal", "cuboide", "torus", "conico");
 		
 		Random rand = new Random();
@@ -46,6 +46,7 @@ public class ObjetoReconhecido {
 		this.setFormato(formato);
 	}
 	
+
 	
 
 }

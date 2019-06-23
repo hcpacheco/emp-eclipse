@@ -9,10 +9,6 @@ public class DAOEmp {
 	private List<ObjetoPerigoso> objetos;
 	private List<ZonaDePatrulha> zonas;
 
-	public List<Policial> getUsuarios() {
-		return usuarios;
-	}
-
 	public List<ZonaDePatrulha> getZonas() {
 		return zonas;
 	}
@@ -23,6 +19,37 @@ public class DAOEmp {
 
 	public void setUsuarios(List<Policial> usuarios) {
 		this.usuarios = usuarios;
+	}
+
+	public List<Policial> getUsuarios() {
+		return usuarios;
+	}
+
+	public Policial getPolicial(String cpf) {
+		for (int i = 0; i < usuarios.size(); i++) {
+			if (usuarios.get(i).getCpf().equals(cpf)) {
+				return usuarios.get(i);
+			}
+		}
+		return null;
+	}
+
+	public Detento getDetento(String cpf) {
+		for (int i = 0; i < detentos.size(); i++) {
+			if (detentos.get(i).getCpf().equals(cpf)) {
+				return detentos.get(i);
+			}
+		}
+		return null;
+	}
+
+	public Civil getCivil(String cpf) {
+		for (int i = 0; i < civis.size(); i++) {
+			if (civis.get(i).getCpf().equals(cpf)) {
+				return civis.get(i);
+			}
+		}
+		return null;
 	}
 
 	public List<Civil> getCivis() {
