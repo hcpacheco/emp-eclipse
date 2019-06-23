@@ -37,12 +37,12 @@ public class Business {
 		}
 	}
 
-	public void enviaMsg(int idDst, String msg) {
+	public void enviaMsg(int idDst, List<String> msg) {
 		notificacao.enviaMsg(idDst, msg);
 	}
 
 	public boolean validar(String usuario, String senha) {
-		
+
 		for (int i = 0; i < usuarios.size(); i++) {
 			if (usuarios.get(i).getUsuario().equals(usuario)) {
 				if (usuarios.get(i).getSenha().equals(senha)) {
@@ -53,6 +53,18 @@ public class Business {
 			}
 		}
 		return false;
+	}
+
+	public void criaNovoDrone() {
+		this.notificacao.criaNovoDrone();
+	}
+	
+	public String getDrone(int id) {
+		return this.notificacao.getDrone(id);
+	}
+	
+	public void criaNovaTornozeleira() {
+		this.notificacao.criaNovaTornozeleira();
 	}
 
 }

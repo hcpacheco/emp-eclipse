@@ -68,7 +68,10 @@ public class DroneFacade {
 
 	public boolean checarPatrulha() {
 		return disponivel;
-
+	}
+	
+	public int getCarga() {
+		return this.bateria.getCarga();
 	}
 
 }

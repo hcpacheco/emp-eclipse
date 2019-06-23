@@ -1,5 +1,6 @@
 package emp.controle;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,8 +12,6 @@ import emp.tornozeleira.TornozeleiraFacade;
 
 public class Notificacao implements Mensagem {
 	private int id;
-	List<Integer> idsDrones;
-	List<Integer> idsTornozeleiras;
 	List<NotificacaoDrone> dronesI;
 	List<NotificacaoTornozeleira> tornozeleirasI;
 
@@ -27,9 +26,8 @@ public class Notificacao implements Mensagem {
 	}
 
 	@Override
-	public boolean enviaMsg(int idDst, String msg) {
-
-		if (isDrone(idDst)) {
+	public boolean enviaMsg(int idDst, List<String> msg) {
+		if (msg.get(0).equals("drone")) {
 			// envia mensagem para drone
 			for (int i = 0; i < dronesI.size(); i++) {
 				if (dronesI.get(i).getId() == idDst) {
@@ -47,7 +45,6 @@ public class Notificacao implements Mensagem {
 			}
 
 		}
-
 		return false;
 
 	}
@@ -55,17 +52,26 @@ public class Notificacao implements Mensagem {
 	public List<NotificacaoDrone> getDrones() {
 		return dronesI;
 	}
+	
+	public String getDrone(int id) {
+		for(int i = 0; i < dronesI.size(); i++ ) {
+			if(dronesI.get(i).getId() == id) {
+				return Integer.toString(dronesI.get(i).getCargaDrone());
+			}
+		}
+		return null;
+	}
 
 	public void setDrones(List<NotificacaoDrone> drones) {
 		this.dronesI = drones;
 	}
+	
+	public void setTornozeleiras(List<NotificacaoTornozeleira> tornozeleiras) {
+		this.tornozeleirasI = tornozeleiras;
+	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	private boolean isDrone(int id) {
-		return Arrays.asList(idsDrones).contains(id);
 	}
 
 	public int getId() {
@@ -73,27 +79,26 @@ public class Notificacao implements Mensagem {
 	}
 
 	@Override
-	public List<String> recebeMsg(String m) {
-		this.rx.add(m);
-		return this.getRx();
+	public void recebeMsg(List<String> msg) {
+		this.setRx(msg);
 	}
 
 	public Notificacao() {
 		super();
 		this.setId(-1);
 		this.setRx(null);
+		this.setDrones(new ArrayList<NotificacaoDrone>());
+		this.setTornozeleiras(new ArrayList<NotificacaoTornozeleira>());
 	}
 
-	public int criaNovaTornozeleira() {
+	public void criaNovaTornozeleira() {
 		NotificacaoTornozeleira n = new NotificacaoTornozeleira(this, this.tornozeleirasI.size());
 		this.tornozeleirasI.add(n);
-		return n.getId();
 	}
 
-	public int criaNovoDrone() {
+	public void criaNovoDrone() {
 		NotificacaoDrone n = new NotificacaoDrone(this, this.dronesI.size());
 		this.dronesI.add(n);
-		return n.getId();
 
 	}
 	

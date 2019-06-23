@@ -41,5 +41,17 @@ public class ControleEmpSingleton {
 	public void setD(DAOEmp d) {
 		this.d = d;
 	}
+	
+	public void criaNovoDrone() {
+		this.b.criaNovoDrone();
+	}
+	
+	public void criaNovaTornozeleira() {
+		this.b.criaNovaTornozeleira();
+	}
+	
+	public String getDrone(int id) {
+		return this.b.getDrone(id);
+	}
 
 }

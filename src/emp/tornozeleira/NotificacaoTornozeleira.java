@@ -25,7 +25,7 @@ public class NotificacaoTornozeleira implements Mensagem {
 	}
 
 	@Override
-	public boolean enviaMsg(int idDst, String msg) {
+	public boolean enviaMsg(int idDst, List<String> msg) {
 		if (this.controle.getId() == idDst) {
 			controle.recebeMsg(msg);
 			return true;
@@ -35,9 +35,8 @@ public class NotificacaoTornozeleira implements Mensagem {
 	}
 
 	@Override
-	public List<String> recebeMsg(String m) {
-		this.rx.add(m);
-		return this.getRx();
+	public void recebeMsg(List<String> msg) {
+		this.setRx(msg);
 	}
 
 	public int getId() {

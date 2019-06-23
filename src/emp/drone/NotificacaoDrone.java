@@ -16,6 +16,10 @@ public class NotificacaoDrone implements Mensagem {
 		this.rx = rx;
 	}
 
+	public List<String> getRx() {
+		return rx;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -24,6 +28,10 @@ public class NotificacaoDrone implements Mensagem {
 		return id;
 	}
 
+	public int getCargaDrone() {
+		return drone.getCarga();
+	}
+	
 	public NotificacaoDrone(Notificacao controle, int id) {
 		super();
 		this.setId(id);
@@ -32,12 +40,8 @@ public class NotificacaoDrone implements Mensagem {
 		this.setRx(null);
 	}
 
-	public List<String> getRx() {
-		return rx;
-	}
-
 	@Override
-	public boolean enviaMsg(int idDst, String msg) {
+	public boolean enviaMsg(int idDst, List<String> msg) {
 		if (this.controle.getId() == idDst) {
 			this.controle.recebeMsg(msg);
 			return true;
@@ -46,9 +50,8 @@ public class NotificacaoDrone implements Mensagem {
 	}
 
 	@Override
-	public List<String> recebeMsg(String m) {
-		this.rx.add(m);
-		return this.getRx();
+	public void recebeMsg(List<String> msg) {
+		this.setRx(msg);
 	}
 
 }

@@ -107,10 +107,14 @@ public class SimulacaoControle{
 		
 		ZonaDePatrulha zona1 = new ZonaDePatrulha("Centro", latitudes1, longitudes1);
 		ZonaDePatrulha zona2 = new ZonaDePatrulha("Agronomia", latitudes2,longitudes2);
+		ZonaDePatrulha zona3 = new ZonaDePatrulha("Ipanema", latitudes1,longitudes2);
+		ZonaDePatrulha zona4 = new ZonaDePatrulha("Navegantes", latitudes2,longitudes1);
 		
 		List<ZonaDePatrulha> listaz = new ArrayList<ZonaDePatrulha>();
 		listaz.add(zona1);
 		listaz.add(zona2);
+		listaz.add(zona3);
+		listaz.add(zona4);
 		
 		// Inicialização de listas de dados usados no objeto DAOEmp
 		List<Civil> listac = new ArrayList<Civil>();
@@ -141,6 +145,19 @@ public class SimulacaoControle{
 		
 		//Inicialização de ControleEmpSingleton db
 		ControleEmpSingleton.getInstance().setDAO(d);
+		
+		ControleEmpSingleton.getInstance().criaNovoDrone();
+		ControleEmpSingleton.getInstance().criaNovoDrone();
+		ControleEmpSingleton.getInstance().criaNovoDrone();
+		
+		ControleEmpSingleton.getInstance().criaNovaTornozeleira();
+		ControleEmpSingleton.getInstance().criaNovaTornozeleira();
+		ControleEmpSingleton.getInstance().criaNovaTornozeleira();
+
+		System.out.println(ControleEmpSingleton.getInstance().getDrone(0));
+		System.out.println(ControleEmpSingleton.getInstance().getDrone(1));
+		System.out.println(ControleEmpSingleton.getInstance().getDrone(2));
+
 		
 		LoginUI window = new LoginUI();
 		window.open();
