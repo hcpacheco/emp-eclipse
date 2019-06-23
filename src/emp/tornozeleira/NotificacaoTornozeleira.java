@@ -5,9 +5,10 @@ import java.util.List;
 import emp.Mensagem;
 import emp.controle.Notificacao;
 
-public class NotificacaoTornozeleira implements Mensagem{
+public class NotificacaoTornozeleira implements Mensagem {
 	private int id;
 	private Notificacao controle;
+	private TornozeleiraFacade tornozeleira;
 
 	private List<String> rx;
 
@@ -19,15 +20,18 @@ public class NotificacaoTornozeleira implements Mensagem{
 		return rx;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public boolean enviaMsg(int idDst, String msg) {
-		if(this.controle.getId() == idDst)
-		{
+		if (this.controle.getId() == idDst) {
 			controle.recebeMsg(msg);
 			return true;
 		}
 		return false;
-		
+
 	}
 
 	@Override
@@ -35,10 +39,16 @@ public class NotificacaoTornozeleira implements Mensagem{
 		this.rx.add(m);
 		return this.getRx();
 	}
-	
-	
+
 	public int getId() {
 		return id;
 	}
 
+	public NotificacaoTornozeleira(Notificacao controle, TornozeleiraFacade tornozeleira, int id) {
+		super();
+		this.setId(id);
+		this.controle = controle;
+		this.tornozeleira = tornozeleira;
+		this.setRx(null);
+	}
 }

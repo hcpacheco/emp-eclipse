@@ -2,20 +2,19 @@ package emp.drone;
 
 import java.util.List;
 
+import emp.controle.Notificacao;
 import emp.persistencia.Pessoa;
 
 public class DroneFacade {
-	private NotificacaoDrone notificacao;
 	private StatusDrone status;
 	private boolean disponivel;
 	private BateriaDrone bateria;
 	private Patrulha patrulha;
 	private GPS gps;
 
-	public DroneFacade(NotificacaoDrone notificacao, double posx, double posy, BateriaDrone bateria) {
+	public DroneFacade() {
 		super();
-		this.setNotificacao(notificacao);
-		this.setGps(new GPS(posx,posy));
+		this.setGps(new GPS(0.0, 0.0));
 		this.setStatus(StatusDrone.IDLE);
 		this.setDisponivel(true);
 		this.setBateria(new BateriaDrone());
@@ -38,14 +37,6 @@ public class DroneFacade {
 		this.patrulha = patrulha;
 	}
 
-	public NotificacaoDrone getNotificacao() {
-		return notificacao;
-	}
-
-	public void setNotificacao(NotificacaoDrone notificacao) {
-		this.notificacao = notificacao;
-	}
-	
 	public StatusDrone getStatus() {
 		return status;
 	}

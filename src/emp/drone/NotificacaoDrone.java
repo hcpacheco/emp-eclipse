@@ -5,21 +5,31 @@ import java.util.List;
 import emp.Mensagem;
 import emp.controle.Notificacao;
 
-public class NotificacaoDrone implements Mensagem{
+public class NotificacaoDrone implements Mensagem {
 	private int id;
 	private Notificacao controle;
-	
+	private DroneFacade drone;
+
 	private List<String> rx;
 
 	public void setRx(List<String> rx) {
 		this.rx = rx;
 	}
 
-	public NotificacaoDrone(int id, Notificacao controle, List<String> rx) {
-		super();
+	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public NotificacaoDrone(Notificacao controle, DroneFacade drone, int id) {
+		super();
+		this.setId(id);
 		this.controle = controle;
-		this.rx = null;
+		this.drone = drone;
+		this.setRx(null);
 	}
 
 	public List<String> getRx() {
@@ -28,11 +38,10 @@ public class NotificacaoDrone implements Mensagem{
 
 	@Override
 	public boolean enviaMsg(int idDst, String msg) {
-		if(this.controle.getId() == idDst)
-		{
+		if (this.controle.getId() == idDst) {
 			this.controle.recebeMsg(msg);
 			return true;
-		}		
+		}
 		return false;
 	}
 
@@ -41,11 +50,5 @@ public class NotificacaoDrone implements Mensagem{
 		this.rx.add(m);
 		return this.getRx();
 	}
-	
-	public int getId() {
-		return id;
-	}
-    
-   
 
 }
