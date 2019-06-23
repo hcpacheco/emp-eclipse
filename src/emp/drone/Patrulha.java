@@ -8,17 +8,16 @@ import emp.persistencia.ZonaDePatrulha;
 public class Patrulha {
 	private int identificador;
 	private List<Float> area;
-	private int duracaoPatrulha;
+	private int duracao;
 	private List<Pessoa> detectados;
 	
-	public List<Pessoa> getPtarulha(){
+	public List<Pessoa> getDetectados(){
 		return detectados;
 	}
 	
-	public Patrulha (List<Float> area, int duracao, int identificador) {
+	public Patrulha(List<Float> area, int duracao) {
 		this.setAreaInicial(area);
 		this.setDuracao(duracao);
-		this.setId(identificador);
 	}
 	
 	private void setId(int identPatrulha) {
@@ -27,7 +26,7 @@ public class Patrulha {
 	}
 
 	private void setDuracao(int duracao) {
-		this.duracaoPatrulha = duracao;
+		this.duracao = duracao;
 		
 	}
 

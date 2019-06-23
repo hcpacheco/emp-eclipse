@@ -9,16 +9,17 @@ public class NotificacaoDrone implements Mensagem{
 	private int id;
 	private Notificacao controle;
 	
-    private boolean notificacaoDrone;
-    private String tipoNotificacao;
-	private String material;
-	private float tamanho;
-	private String formato;
-	
 	private List<String> rx;
 
 	public void setRx(List<String> rx) {
 		this.rx = rx;
+	}
+
+	public NotificacaoDrone(int id, Notificacao controle, List<String> rx) {
+		super();
+		this.id = id;
+		this.controle = controle;
+		this.rx = null;
 	}
 
 	public List<String> getRx() {

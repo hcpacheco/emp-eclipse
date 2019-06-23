@@ -9,22 +9,30 @@ public class BateriaDrone {
 	private boolean alertaRecarga;
 	private StatusBateria status;
 
+	public BateriaDrone() {
+		super();
+		int random = (int) (Math.random() * 20 + 1);
+		this.setCarga(75 + random);
+		this.alertaRecarga = false;
+		this.setStatus(StatusBateria.CARREGADO);
+	}
+
 	public void setCarga(int carga) {
 		this.carga = carga;
 	}
 
-	public int getCarga(int carga) {
-		return carga;
+	public int getCarga() {
+		return this.carga;
 	}
 
 	public void verificaCarga(int carga) {
-		if (this.carga <= 20) {
+		if (this.getCarga() <= 20) {
 			this.setStatus(StatusBateria.EMERGENCIA);
-			; // Necessita de Recarga
+		} else if (this.getCarga() <= 60) {
+			this.setStatus(StatusBateria.SUFICIENTE);
 		} else {
-			this.setStatus(StatusBateria.SUFICIENTE); // Drone com boa bateria
+			this.setStatus(StatusBateria.CARREGADO);
 		}
-
 	}
 
 	public boolean solicitaRecarga(EstacaoCarregamento e) {
