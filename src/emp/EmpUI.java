@@ -74,9 +74,11 @@ public class EmpUI {
 		btnConfigurarDrone.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				ConfigurarDroneUI window = new ConfigurarDroneUI();
+				window.open();
 			}
 		});
-		btnConfigurarDrone.setText("Configurar Patrulhas");
+		btnConfigurarDrone.setText("Configurar Drones");
 		btnConfigurarDrone.setBounds(10, 140, 133, 25);
 		
 		Button btnVerificarPatrulhas = new Button(shell, SWT.NONE);
@@ -93,7 +95,7 @@ public class EmpUI {
 			}
 		});
 
-		btnVerificarPatrulhas.setText("Verificar Patrulhas");
+		btnVerificarPatrulhas.setText("Verificar Drones");
 		btnVerificarPatrulhas.setBounds(271, 140, 133, 25);
 		
 		Label label_3 = new Label(shell, SWT.NONE);
@@ -110,6 +112,13 @@ public class EmpUI {
 		label_5.setBounds(10, 247, 394, 25);
 		
 		Button btnConfigurarTornozeleira = new Button(shell, SWT.NONE);
+		btnConfigurarTornozeleira.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				ConfigurarTornozeleiraUI window = new ConfigurarTornozeleiraUI();
+				window.open();
+			}
+		});
 		btnConfigurarTornozeleira.setText("Configurar Tornozeleira");
 		btnConfigurarTornozeleira.setBounds(10, 291, 133, 25);
 		
