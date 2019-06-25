@@ -149,14 +149,17 @@ public class SimulacaoControle{
 		ControleEmpSingleton.getInstance().criaNovoDrone();
 		ControleEmpSingleton.getInstance().criaNovoDrone();
 		ControleEmpSingleton.getInstance().criaNovoDrone();
+		ControleEmpSingleton.getInstance().criaNovoDrone();
+		ControleEmpSingleton.getInstance().criaNovoDrone();
+		ControleEmpSingleton.getInstance().criaNovoDrone();
 		
 		ControleEmpSingleton.getInstance().criaNovaTornozeleira();
 		ControleEmpSingleton.getInstance().criaNovaTornozeleira();
 		ControleEmpSingleton.getInstance().criaNovaTornozeleira();
 
-		System.out.println(ControleEmpSingleton.getInstance().getDrone(0));
-		System.out.println(ControleEmpSingleton.getInstance().getDrone(1));
-		System.out.println(ControleEmpSingleton.getInstance().getDrone(2));
+//		System.out.println(ControleEmpSingleton.getInstance().getDrone(0));
+//		System.out.println(ControleEmpSingleton.getInstance().getDrone(1));
+//		System.out.println(ControleEmpSingleton.getInstance().getDrone(2));
 
 		
 		LoginUI window = new LoginUI();

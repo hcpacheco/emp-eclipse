@@ -122,11 +122,6 @@ public class LoginUI {
 				}
 
 			}
-
-			@Override
-			public void mouseDoubleClick(MouseEvent e) {
-				shell.close();
-			}
 		});
 		btnNewButton.setBounds(174, 205, 75, 25);
 		btnNewButton.setText("Logar");

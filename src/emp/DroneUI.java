@@ -5,6 +5,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
 import org.eclipse.wb.swt.SWTResourceManager;
+
+import emp.controle.ControleEmpSingleton;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.List;
@@ -13,12 +16,19 @@ import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import javax.swing.JTable;
+import org.eclipse.swt.events.ShellAdapter;
+import org.eclipse.swt.events.ShellEvent;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 
 public class DroneUI {
 
 	protected Shell shell;
 	private Text text;
-	private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
+	private Label lblNewLabel_1;
+	private Label lblPosioXxxxxx;
+	private Label lblStatusAtualXxxxx;
+	private Label lblNvelDeBateria;
 
 	/**
 	 * Launch the application.
@@ -39,9 +49,9 @@ public class DroneUI {
 	 */
 	public void open() {
 		Display display = Display.getDefault();
-		createContents();
+		createContents(1);
 		shell.open();
-		shell.layout();
+		shell.layout(true);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
@@ -52,10 +62,29 @@ public class DroneUI {
 	/**
 	 * Create contents of the window.
 	 */
-	protected void createContents() {
+	protected void createContents(int idDrone) {
 		shell = new Shell();
+		shell.addShellListener(new ShellAdapter() {
+		});
+		
+		System.out.println(idDrone);
+		String mensagem = ControleEmpSingleton.getInstance().getDrone((idDrone));
+		String[] mensagemArray = mensagem.split(";", -1);
+		String status = mensagemArray[0];
+		String carga = mensagemArray[1];
+		String posx = mensagemArray[2];
+		String posy = mensagemArray[3];
+		
+		System.out.println(idDrone);
+		System.out.println(status);
+		System.out.println(carga);
+		System.out.println(posx);
+		System.out.println(posy);
+		System.out.println("teste");
+		
 		shell.setSize(420, 330);
 		shell.setText("Drone");
+		shell.setLayout(null);
 
 		Label lblDroneSimulador = new Label(shell, SWT.NONE);
 		lblDroneSimulador.setText("Simulador de Drone");
@@ -87,27 +116,67 @@ public class DroneUI {
 		label_2.setBounds(0, 162, 414, 2);
 
 		Spinner spinner = new Spinner(shell, SWT.BORDER);
+		spinner.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+//				createContents(spinner.getSelection());
+				String mensagem = ControleEmpSingleton.getInstance().getDrone(spinner.getSelection());
+				String[] mensagemArray = mensagem.split(";", -1);
+				String status = mensagemArray[0];
+				String carga = mensagemArray[1];
+				String posx = mensagemArray[2];
+				String posy = mensagemArray[3];
+				printDrone("Agronomia", posx, posy, status, carga);
+				
+//				System.out.println("teste");
+//				lblPosioXxxxxx.setText("o");
+				
+//				lblNewLabel_1.setText("oi");
+//				lblNewLabel_1.getParent().layout();
+//				createContents(spinner.getSelection());
+			}
+		});
+		
+		spinner.setMaximum(5);
 		spinner.setBounds(331, 10, 47, 22);
 
 		Label lblNewLabel = new Label(shell, SWT.NONE);
 		lblNewLabel.setBounds(300, 13, 26, 15);
 		lblNewLabel.setText("ID :");
 
-		Label lblNewLabel_1 = new Label(shell, SWT.NONE);
+		lblNewLabel_1 = new Label(shell, SWT.NONE);
 		lblNewLabel_1.setBounds(84, 185, 136, 15);
 		lblNewLabel_1.setText("Zona Atual : XXXXXXX");
 
-		Label lblPosioXxxxxx = new Label(shell, SWT.NONE);
+		lblPosioXxxxxx = new Label(shell, SWT.NONE);
 		lblPosioXxxxxx.setText("Posi\u00E7\u00E3o Atual : XXX.XXX , XXX.XXX");
 		lblPosioXxxxxx.setBounds(84, 208, 206, 15);
 
-		Label lblStatusAtualXxxxx = new Label(shell, SWT.NONE);
+		lblStatusAtualXxxxx = new Label(shell, SWT.NONE);
 		lblStatusAtualXxxxx.setText("Status : XXXXX");
 		lblStatusAtualXxxxx.setBounds(84, 229, 251, 15);
 
-		Label lblNvelDeBateria = new Label(shell, SWT.NONE);
+		lblNvelDeBateria = new Label(shell, SWT.NONE);
 		lblNvelDeBateria.setText("Carga da bateria : XX%");
 		lblNvelDeBateria.setBounds(84, 250, 193, 15);
+		
+		printDrone("Agronomia", posx, posy, status, carga);
+//		lblNewLabel_1.setText("Zona Atual : ".concat("Agronomia"));
+//		lblPosioXxxxxx.setText("Posi\u00E7\u00E3o Atual : ".concat(posx).concat(" , ").concat(posy));
+//		lblStatusAtualXxxxx.setText("Status : ".concat(status));
+//		lblNvelDeBateria.setText("Carga da bateria : ".concat(carga).concat("%"));
+
+
+
+	}
+	
+	
+	public void printDrone(String zona, String posx, String posy, String status, String carga ) {
+		System.out.println(carga);
+		lblNewLabel_1.setText("Zona Atual : ".concat(zona));
+		lblPosioXxxxxx.setText("Posi\u00E7\u00E3o Atual : ".concat(posx).concat(" , ").concat(posy));
+		lblStatusAtualXxxxx.setText("Status : ".concat(status));
+		lblNvelDeBateria.setText("Carga da bateria : ".concat(carga).concat("%"));
 
 	}
 }

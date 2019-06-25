@@ -37,8 +37,8 @@ public class DroneFacade {
 		this.patrulha = patrulha;
 	}
 
-	public StatusDrone getStatus() {
-		return status;
+	public String getStatus() {
+		return status.name();
 	}
 
 	public void setStatus(StatusDrone status) {
@@ -72,6 +72,14 @@ public class DroneFacade {
 	
 	public int getCarga() {
 		return this.bateria.getCarga();
+	}
+	
+	public double getPosx() {
+		return this.gps.getPosx();
+	}
+	
+	public double getPosy() {
+		return this.gps.getPosy();
 	}
 
 }

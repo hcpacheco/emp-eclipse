@@ -56,7 +56,13 @@ public class Notificacao implements Mensagem {
 	public String getDrone(int id) {
 		for(int i = 0; i < dronesI.size(); i++ ) {
 			if(dronesI.get(i).getId() == id) {
-				return Integer.toString(dronesI.get(i).getCargaDrone());
+				dronesI.get(i).getDrone();
+				List<String> mensagem = this.getRx();
+				
+				//verifica se mensagem vem do drone
+				if(mensagem.get(0).equals("drone")) {
+					return mensagem.get(1);
+				}
 			}
 		}
 		return null;

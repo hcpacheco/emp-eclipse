@@ -29,10 +29,6 @@ public class ControleEmpSingleton {
 	public boolean validarSenha(String usuario, String senha) {
 		return b.validar(usuario, senha);
 	}
-	
-	public String teste() {
-		return "oi";
-	}
 
 	public DAOEmp getD() {
 		return d;

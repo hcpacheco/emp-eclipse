@@ -1,5 +1,6 @@
 package emp.drone;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import emp.Mensagem;
@@ -28,8 +29,18 @@ public class NotificacaoDrone implements Mensagem {
 		return id;
 	}
 
-	public int getCargaDrone() {
-		return drone.getCarga();
+	public void getDrone() {
+		String carga = Integer.toString(drone.getCarga());
+		String status = drone.getStatus();
+		String posx = Double.toString(drone.getPosx());
+		String posy = Double.toString(drone.getPosy());
+		String mensagem = status.concat(";").concat(carga).concat(";").concat(posx).concat(";").concat(posy);
+//		System.out.println(mensagem);
+//		return drone.getCarga();
+		List<String> tx = new ArrayList<>();
+		tx.add("drone");
+		tx.add(mensagem);
+		this.enviaMsg(-1, tx);
 	}
 	
 	public NotificacaoDrone(Notificacao controle, int id) {
