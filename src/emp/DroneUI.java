@@ -49,7 +49,7 @@ public class DroneUI {
 	 */
 	public void open() {
 		Display display = Display.getDefault();
-		createContents(1);
+		createContents(0);
 		shell.open();
 		shell.layout(true);
 		while (!shell.isDisposed()) {
@@ -67,7 +67,7 @@ public class DroneUI {
 		shell.addShellListener(new ShellAdapter() {
 		});
 		
-		System.out.println(idDrone);
+//		System.out.println(idDrone);
 		String mensagem = ControleEmpSingleton.getInstance().getDrone((idDrone));
 		String[] mensagemArray = mensagem.split(";", -1);
 		String zona = mensagemArray[0];

@@ -3,7 +3,7 @@ package emp.drone;
 import java.util.List;
 
 import emp.persistencia.Pessoa;
-import emp.persistencia.ZonaDePatrulha;
+import emp.persistencia.ZonaDeAtividade;
 
 public class Patrulha {
 	private int identificador;

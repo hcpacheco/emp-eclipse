@@ -5,7 +5,7 @@ import java.util.List;
 
 import emp.Mensagem;
 import emp.controle.Notificacao;
-import emp.persistencia.ZonaDePatrulha;
+import emp.persistencia.ZonaDeAtividade;
 
 public class NotificacaoDrone implements Mensagem {
 	private int id;
@@ -67,7 +67,7 @@ public class NotificacaoDrone implements Mensagem {
 		this.setRx(msg);
 	}
 	
-	public void setZona(ZonaDePatrulha z) {
+	public void setZona(ZonaDeAtividade z) {
 		this.drone.setZona(z);
 	}
 	

@@ -21,10 +21,17 @@ public class Detento extends Pessoa
 		this.atividadeCardiaca = atividadeCardiaca;
 	}
 	
+	public Detento(){
+	super();
+	this.setPosicoes(null);
+	this.setAtividadeCardiaca(0);
+	}
+	
 	public Detento(String nome, Date d, Sexo s, String cpf,List<Float> posicoes, int atividadeCardiaca) {
-		super();
+		super(nome, d, s, cpf);
 		this.setPosicoes(posicoes);
 		this.setAtividadeCardiaca(atividadeCardiaca);
+		
 	}
 
 }

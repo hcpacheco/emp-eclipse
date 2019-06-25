@@ -15,7 +15,7 @@ import emp.persistencia.Detento;
 import emp.persistencia.ObjetoPerigoso;
 import emp.persistencia.Policial;
 import emp.persistencia.Sexo;
-import emp.persistencia.ZonaDePatrulha;
+import emp.persistencia.ZonaDeAtividade;
 
 public class SimulacaoControle{
 
@@ -73,6 +73,7 @@ public class SimulacaoControle{
 		// atividadeCardiaca)
 		Detento detento1 = new Detento("Juliana", data2, Sexo.FEMININO, "0101", posicoes, -1);
 		Detento detento2 = new Detento("Zé", data1, Sexo.MASCULINO, "1010", posicoes, -1);
+		Detento detento3 = new Detento("Leonardo", data1, Sexo.MASCULINO, "8765", posicoes, -1);
 
 		// OBJETOS PERIGOSOS
 		// (String nome, int tamanho, String material)
@@ -105,12 +106,12 @@ public class SimulacaoControle{
 		longitudes2.add(new Double(8.8));
 		longitudes2.add(new Double(5.3));
 		
-		ZonaDePatrulha zona1 = new ZonaDePatrulha("Centro", latitudes1, longitudes1);
-		ZonaDePatrulha zona2 = new ZonaDePatrulha("Agronomia", latitudes2,longitudes2);
-		ZonaDePatrulha zona3 = new ZonaDePatrulha("Ipanema", latitudes1,longitudes2);
-		ZonaDePatrulha zona4 = new ZonaDePatrulha("Navegantes", latitudes2,longitudes1);
+		ZonaDeAtividade zona1 = new ZonaDeAtividade("Centro", latitudes1, longitudes1);
+		ZonaDeAtividade zona2 = new ZonaDeAtividade("Agronomia", latitudes2,longitudes2);
+		ZonaDeAtividade zona3 = new ZonaDeAtividade("Ipanema", latitudes1,longitudes2);
+		ZonaDeAtividade zona4 = new ZonaDeAtividade("Navegantes", latitudes2,longitudes1);
 		
-		List<ZonaDePatrulha> listaz = new ArrayList<ZonaDePatrulha>();
+		List<ZonaDeAtividade> listaz = new ArrayList<ZonaDeAtividade>();
 		listaz.add(zona1);
 		listaz.add(zona2);
 		listaz.add(zona3);
@@ -132,6 +133,7 @@ public class SimulacaoControle{
 		List<Detento> listad = new ArrayList<Detento>();
 		listad.add(detento1);
 		listad.add(detento2);
+		listad.add(detento3);
 
 		List<ObjetoPerigoso> listao = new ArrayList<ObjetoPerigoso>();
 		listao.add(objeto1);
@@ -153,16 +155,25 @@ public class SimulacaoControle{
 		ControleEmpSingleton.getInstance().criaNovoDrone();
 		ControleEmpSingleton.getInstance().criaNovoDrone();
 		
-		ControleEmpSingleton.getInstance().setZona("Agronomia", 0);
-		ControleEmpSingleton.getInstance().setZona("Centro", 1);
-		ControleEmpSingleton.getInstance().setZona("Ipanema", 2);
-		ControleEmpSingleton.getInstance().setZona("Agronomia", 3);
-		ControleEmpSingleton.getInstance().setZona("Navegantes", 4);
-		ControleEmpSingleton.getInstance().setZona("Centro", 5);
+		ControleEmpSingleton.getInstance().setZonaDrone("Agronomia", 0);
+		ControleEmpSingleton.getInstance().setZonaDrone("Centro", 1);
+		ControleEmpSingleton.getInstance().setZonaDrone("Ipanema", 2);
+		ControleEmpSingleton.getInstance().setZonaDrone("Agronomia", 3);
+		ControleEmpSingleton.getInstance().setZonaDrone("Navegantes", 4);
+		ControleEmpSingleton.getInstance().setZonaDrone("Centro", 5);
 		
 		ControleEmpSingleton.getInstance().criaNovaTornozeleira();
 		ControleEmpSingleton.getInstance().criaNovaTornozeleira();
 		ControleEmpSingleton.getInstance().criaNovaTornozeleira();
+		
+		ControleEmpSingleton.getInstance().setDetentoTornozeleira("0101", 0);
+		ControleEmpSingleton.getInstance().setDetentoTornozeleira("1010", 1);
+		ControleEmpSingleton.getInstance().setDetentoTornozeleira("8765", 2);
+
+		
+		ControleEmpSingleton.getInstance().getTornozeleira(0);
+		ControleEmpSingleton.getInstance().getTornozeleira(1);
+		ControleEmpSingleton.getInstance().getTornozeleira(2);
 
 //		System.out.println(ControleEmpSingleton.getInstance().getDrone(0));
 //		System.out.println(ControleEmpSingleton.getInstance().getDrone(1));

@@ -20,6 +20,7 @@ public class ControleEmpSingleton {
 		this.d = d;
 		this.b.setZonas(d.getZonas());
 		this.b.setUsuarios(d.getUsuarios());
+		this.b.setDetentos(d.getDetentos());
 	}
 
 	public static ControleEmpSingleton getInstance() {
@@ -32,10 +33,6 @@ public class ControleEmpSingleton {
 
 	public DAOEmp getD() {
 		return d;
-	}
-
-	public void setD(DAOEmp d) {
-		this.d = d;
 	}
 	
 	public void criaNovoDrone() {
@@ -50,8 +47,16 @@ public class ControleEmpSingleton {
 		return this.b.getDrone(id);
 	}
 	
-	public void setZona(String nome, int idDrone) {
-		this.b.setZona(nome, idDrone);
+	public String getTornozeleira(int id) {
+		return this.b.getTornozeleira(id);
+	}
+	
+	public void setZonaDrone(String nome, int idDrone) {
+		this.b.setZonaDrone(nome, idDrone);
 	}
 
+	public void setDetentoTornozeleira(String cpf, int idTornozeleira) {
+		this.b.setDetentoTornozeleira(cpf, idTornozeleira);
+	}
+	
 }

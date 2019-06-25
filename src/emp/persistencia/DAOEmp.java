@@ -7,13 +7,13 @@ public class DAOEmp {
 	private List<Civil> civis;
 	private List<Detento> detentos;
 	private List<ObjetoPerigoso> objetos;
-	private List<ZonaDePatrulha> zonas;
+	private List<ZonaDeAtividade> zonas;
 
-	public List<ZonaDePatrulha> getZonas() {
+	public List<ZonaDeAtividade> getZonas() {
 		return zonas;
 	}
 
-	public void setZonas(List<ZonaDePatrulha> zonas) {
+	public void setZonas(List<ZonaDeAtividade> zonas) {
 		this.zonas = zonas;
 	}
 
@@ -77,7 +77,7 @@ public class DAOEmp {
 	}
 
 	public DAOEmp(List<Policial> usuarios, List<Civil> civis, List<Detento> detentos, List<ObjetoPerigoso> objetos,
-			List<ZonaDePatrulha> zonas) {
+			List<ZonaDeAtividade> zonas) {
 		super();
 		this.setUsuarios(usuarios);
 		this.setCivis(civis);

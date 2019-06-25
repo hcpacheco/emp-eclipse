@@ -1,9 +1,11 @@
 package emp.tornozeleira;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import emp.Mensagem;
 import emp.controle.Notificacao;
+import emp.persistencia.Detento;
 
 public class NotificacaoTornozeleira implements Mensagem {
 	private int id;
@@ -49,5 +51,25 @@ public class NotificacaoTornozeleira implements Mensagem {
 		this.controle = controle;
 		this.tornozeleira = new TornozeleiraFacade();
 		this.setRx(null);
+	}
+	
+	public void getTornozeleira() {
+		String det = tornozeleira.getDetento().getNome();
+		String carga = Integer.toString(tornozeleira.getCarga());
+		String posx = Double.toString(tornozeleira.getGps().getPosx());
+		String posy = Double.toString(tornozeleira.getGps().getPosy());
+		String bpm = Integer.toString(tornozeleira.getChoque().getAtividadeCardiaca());
+		String potencia = Integer.toString(tornozeleira.getChoque().getPotenciaChoque());
+		
+		String mensagem = det.concat(";").concat(carga).concat(";").concat(posx).concat(";").concat(posy).concat(";").concat(bpm).concat(";").concat(potencia);
+		List<String> tx = new ArrayList<>();
+		tx.add("tornozeleira");
+		tx.add(mensagem);
+		this.enviaMsg(-1, tx);
+//		System.out.println(mensagem);
+	}
+	
+	public void setDetento(Detento d) {
+		this.tornozeleira.setDetento(d);
 	}
 }

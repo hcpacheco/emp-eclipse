@@ -3,7 +3,7 @@ package emp.persistencia;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ZonaDePatrulha {
+public class ZonaDeAtividade {
 	private String nome;
 	private List<Double> latitudes;//= new ArrayList();
 	private List<Double> longitudes;// = new ArrayList();
@@ -24,20 +24,20 @@ public class ZonaDePatrulha {
 		this.nome = nome;
 	}
 
-	public ZonaDePatrulha(String nome,List<Double> latitudes, List<Double> longitudes) {
+	public ZonaDeAtividade(String nome,List<Double> latitudes, List<Double> longitudes) {
 		super();
 		this.latitudes = latitudes;
 		this.longitudes = longitudes;
 		this.nome = nome;
 	}
 
-	public ZonaDePatrulha(List<Double> latitudes, List<Double> longitudes) {
+	public ZonaDeAtividade(List<Double> latitudes, List<Double> longitudes) {
 		super();
 		this.latitudes = latitudes;
 		this.longitudes = longitudes;
 	}
 	
-	public ZonaDePatrulha() {
+	public ZonaDeAtividade() {
 		super();
 		this.latitudes = null;
 		this.longitudes = null;

@@ -7,7 +7,8 @@ import java.util.List;
 import emp.Mensagem;
 import emp.drone.DroneFacade;
 import emp.drone.NotificacaoDrone;
-import emp.persistencia.ZonaDePatrulha;
+import emp.persistencia.Detento;
+import emp.persistencia.ZonaDeAtividade;
 import emp.tornozeleira.NotificacaoTornozeleira;
 import emp.tornozeleira.TornozeleiraFacade;
 
@@ -68,6 +69,22 @@ public class Notificacao implements Mensagem {
 		}
 		return null;
 	}
+	
+	public String getTornozeleira(int id) {
+		for (int i = 0; i < tornozeleirasI.size(); i++) {
+			if (tornozeleirasI.get(i).getId() == id) {
+				tornozeleirasI.get(i).getTornozeleira();
+				List<String> mensagem = this.getRx();
+
+				// verifica se mensagem vem do drone
+				if (mensagem.get(0).equals("tornozeleira")) {
+					return mensagem.get(1);
+				}
+			}
+		}
+		return null;
+		
+	}
 
 	public void setDrones(List<NotificacaoDrone> drones) {
 		this.dronesI = drones;
@@ -109,25 +126,21 @@ public class Notificacao implements Mensagem {
 
 	}
 
-//	public void enviaZona(int idDrone, ZonaDePatrulha z) {
-//		List<String> mensagem = new ArrayList<String>();
-//		mensagem.set(0, "drone");
-//		
-//		String header = "1,";
-//		String boundaries = z.latToString().concat(z.longToString());
-//		mensagem.set(1, header.concat(boundaries));
-//		
-//		enviaMsg(idDrone,mensagem);
-//	}
-	public void enviaZona(int idDrone, ZonaDePatrulha z) {
-//		List<String> mensagem = new ArrayList<String>();
-//		mensagem.set(0, "drone");
-//		mensagem.set(1, )
+	public void enviaZona(int idDrone, ZonaDeAtividade z) {
 		for (int i = 0; i < dronesI.size(); i++) {
 			if (dronesI.get(i).getId() == idDrone) {
 				dronesI.get(i).setZona(z);
 			}
 		}
+	}
+	
+	public void setDetentoTornozeleira(Detento d, int idTornozeleira ) {
+		for (int i = 0; i < tornozeleirasI.size(); i++) {
+			if (tornozeleirasI.get(i).getId() == idTornozeleira) {
+				tornozeleirasI.get(i).setDetento(d);
+			}
+		}
+		
 	}
 
 }
