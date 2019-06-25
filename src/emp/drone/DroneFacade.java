@@ -4,6 +4,7 @@ import java.util.List;
 
 import emp.controle.Notificacao;
 import emp.persistencia.Pessoa;
+import emp.persistencia.ZonaDePatrulha;
 
 public class DroneFacade {
 	private StatusDrone status;
@@ -11,6 +12,7 @@ public class DroneFacade {
 	private BateriaDrone bateria;
 	private Patrulha patrulha;
 	private GPS gps;
+	private ZonaDePatrulha zona;
 
 	public DroneFacade() {
 		super();
@@ -18,7 +20,8 @@ public class DroneFacade {
 		this.setStatus(StatusDrone.IDLE);
 		this.setDisponivel(true);
 		this.setBateria(new BateriaDrone());
-		this.setPatrulha(new Patrulha(null, 0));
+		this.setPatrulha(new Patrulha(null,null, 0));
+		this.setZona(new ZonaDePatrulha());
 	}
 
 	public GPS getGps() {
@@ -82,4 +85,11 @@ public class DroneFacade {
 		return this.gps.getPosy();
 	}
 
+	public void setZona(ZonaDePatrulha z) {
+		this.zona = z;
+	}
+	
+	public String getZona() {
+		return this.zona.getNome();
+	}
 }

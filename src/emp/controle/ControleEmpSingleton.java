@@ -49,5 +49,9 @@ public class ControleEmpSingleton {
 	public String getDrone(int id) {
 		return this.b.getDrone(id);
 	}
+	
+	public void setZona(String nome, int idDrone) {
+		this.b.setZona(nome, idDrone);
+	}
 
 }

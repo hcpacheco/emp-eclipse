@@ -5,6 +5,7 @@ import java.util.List;
 
 import emp.Mensagem;
 import emp.controle.Notificacao;
+import emp.persistencia.ZonaDePatrulha;
 
 public class NotificacaoDrone implements Mensagem {
 	private int id;
@@ -30,12 +31,13 @@ public class NotificacaoDrone implements Mensagem {
 	}
 
 	public void getDrone() {
+		String zona = drone.getZona();
 		String carga = Integer.toString(drone.getCarga());
 		String status = drone.getStatus();
 		String posx = Double.toString(drone.getPosx());
 		String posy = Double.toString(drone.getPosy());
-		String mensagem = status.concat(";").concat(carga).concat(";").concat(posx).concat(";").concat(posy);
-//		System.out.println(mensagem);
+		String mensagem = zona.concat(";").concat(status).concat(";").concat(carga).concat(";").concat(posx).concat(";").concat(posy);
+		System.out.println(mensagem);
 //		return drone.getCarga();
 		List<String> tx = new ArrayList<>();
 		tx.add("drone");
@@ -64,5 +66,10 @@ public class NotificacaoDrone implements Mensagem {
 	public void recebeMsg(List<String> msg) {
 		this.setRx(msg);
 	}
+	
+	public void setZona(ZonaDePatrulha z) {
+		this.drone.setZona(z);
+	}
+	
 
 }

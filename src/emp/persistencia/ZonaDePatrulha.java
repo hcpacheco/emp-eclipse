@@ -5,8 +5,8 @@ import java.util.List;
 
 public class ZonaDePatrulha {
 	private String nome;
-	private List<Float> latitudes;//= new ArrayList();
-	private List<Float> longitudes;// = new ArrayList();
+	private List<Double> latitudes;//= new ArrayList();
+	private List<Double> longitudes;// = new ArrayList();
 	
 	public List getLatitudes() {
 		return latitudes;
@@ -24,21 +24,40 @@ public class ZonaDePatrulha {
 		this.nome = nome;
 	}
 
-	public ZonaDePatrulha(String nome,List latitudes, List longitudes) {
+	public ZonaDePatrulha(String nome,List<Double> latitudes, List<Double> longitudes) {
 		super();
 		this.latitudes = latitudes;
 		this.longitudes = longitudes;
 		this.nome = nome;
 	}
 
-	public ZonaDePatrulha(List<Float> latitudes, List<Float> longitudes) {
+	public ZonaDePatrulha(List<Double> latitudes, List<Double> longitudes) {
 		super();
 		this.latitudes = latitudes;
 		this.longitudes = longitudes;
 	}
 	
+	public ZonaDePatrulha() {
+		super();
+		this.latitudes = null;
+		this.longitudes = null;
+		this.nome = "";
+	}
 	
+	public String latToString() {
+		String m = "";
+		for (int i = 0; i < latitudes.size(); i++) {
+			m.concat(Double.toString(latitudes.get(i)).concat(","));
+		}
+		return m;
+	}
 	
-	
+	public String longToString() {
+		String m = "";
+		for (int i = 0; i < longitudes.size(); i++) {
+			m.concat(Double.toString(longitudes.get(i)).concat(","));
+		}
+		return m;
+	}
 
 }

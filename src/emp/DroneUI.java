@@ -70,17 +70,18 @@ public class DroneUI {
 		System.out.println(idDrone);
 		String mensagem = ControleEmpSingleton.getInstance().getDrone((idDrone));
 		String[] mensagemArray = mensagem.split(";", -1);
-		String status = mensagemArray[0];
-		String carga = mensagemArray[1];
-		String posx = mensagemArray[2];
-		String posy = mensagemArray[3];
+		String zona = mensagemArray[0];
+		String status = mensagemArray[1];
+		String carga = mensagemArray[2];
+		String posx = mensagemArray[3];
+		String posy = mensagemArray[4];
 		
-		System.out.println(idDrone);
-		System.out.println(status);
-		System.out.println(carga);
-		System.out.println(posx);
-		System.out.println(posy);
-		System.out.println("teste");
+//		System.out.println(idDrone);
+//		System.out.println(status);
+//		System.out.println(carga);
+//		System.out.println(posx);
+//		System.out.println(posy);
+//		System.out.println("teste");
 		
 		shell.setSize(420, 330);
 		shell.setText("Drone");
@@ -122,11 +123,12 @@ public class DroneUI {
 //				createContents(spinner.getSelection());
 				String mensagem = ControleEmpSingleton.getInstance().getDrone(spinner.getSelection());
 				String[] mensagemArray = mensagem.split(";", -1);
-				String status = mensagemArray[0];
-				String carga = mensagemArray[1];
-				String posx = mensagemArray[2];
-				String posy = mensagemArray[3];
-				printDrone("Agronomia", posx, posy, status, carga);
+				String zona = mensagemArray[0];
+				String status = mensagemArray[1];
+				String carga = mensagemArray[2];
+				String posx = mensagemArray[3];
+				String posy = mensagemArray[4];
+				printDrone(zona, posx, posy, status, carga);
 				
 //				System.out.println("teste");
 //				lblPosioXxxxxx.setText("o");
@@ -160,7 +162,7 @@ public class DroneUI {
 		lblNvelDeBateria.setText("Carga da bateria : XX%");
 		lblNvelDeBateria.setBounds(84, 250, 193, 15);
 		
-		printDrone("Agronomia", posx, posy, status, carga);
+		printDrone(zona, posx, posy, status, carga);
 //		lblNewLabel_1.setText("Zona Atual : ".concat("Agronomia"));
 //		lblPosioXxxxxx.setText("Posi\u00E7\u00E3o Atual : ".concat(posx).concat(" , ").concat(posy));
 //		lblStatusAtualXxxxx.setText("Status : ".concat(status));
@@ -172,7 +174,7 @@ public class DroneUI {
 	
 	
 	public void printDrone(String zona, String posx, String posy, String status, String carga ) {
-		System.out.println(carga);
+//		System.out.println(carga);
 		lblNewLabel_1.setText("Zona Atual : ".concat(zona));
 		lblPosioXxxxxx.setText("Posi\u00E7\u00E3o Atual : ".concat(posx).concat(" , ").concat(posy));
 		lblStatusAtualXxxxx.setText("Status : ".concat(status));

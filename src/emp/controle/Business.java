@@ -1,5 +1,6 @@
 package emp.controle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import emp.persistencia.Policial;
@@ -26,7 +27,7 @@ public class Business {
 		this.zonas = zonas;
 	}
 
-	public void newZonaDePatulha(List<Float> latitudes, List<Float> longitudes) {
+	public void newZonaDePatulha(List<Double> latitudes, List<Double> longitudes) {
 		int tamanhoLatitude = latitudes.size();
 		int tamanhoLongitude = longitudes.size();
 
@@ -35,6 +36,15 @@ public class Business {
 			ZonaDePatrulha novaZona = new ZonaDePatrulha(latitudes, longitudes);
 			this.zonas.add(novaZona);
 		}
+	}
+
+	public ZonaDePatrulha getZonaPeloNome(String nome) {
+		for(int i = 0; i < zonas.size(); i++) {
+			if(zonas.get(i).getNome().equals(nome)) {
+				return zonas.get(i);
+			}
+		}
+		return null;
 	}
 
 	public void enviaMsg(int idDst, List<String> msg) {
@@ -58,13 +68,21 @@ public class Business {
 	public void criaNovoDrone() {
 		this.notificacao.criaNovoDrone();
 	}
-	
+
 	public String getDrone(int id) {
 		return this.notificacao.getDrone(id);
 	}
-	
+
 	public void criaNovaTornozeleira() {
 		this.notificacao.criaNovaTornozeleira();
+	}
+
+	public void setZona(String nome, int idDrone) {
+		ZonaDePatrulha z = getZonaPeloNome(nome);
+//		System.out.println(nome);
+//		System.out.println("aqui");
+//		System.out.println(z.getNome());
+		this.notificacao.enviaZona(idDrone,z);
 	}
 
 }

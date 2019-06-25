@@ -81,29 +81,29 @@ public class SimulacaoControle{
 		ObjetoPerigoso objeto3 = new ObjetoPerigoso("Machado", 50, "torus");
 
 		//ZONAS DE PATRULHA
-		List<Float> latitudes1 = new ArrayList<Float>();
-		latitudes1.add(new Float(10.2));
-		latitudes1.add(new Float(1.1));
-		latitudes1.add(new Float(3.3));
-		latitudes1.add(new Float(4.25));
+		List<Double> latitudes1 = new ArrayList<Double>();
+		latitudes1.add(new Double(10.2));
+		latitudes1.add(new Double(1.1));
+		latitudes1.add(new Double(3.3));
+		latitudes1.add(new Double(4.25));
 		
-		List<Float> latitudes2 = new ArrayList<Float>();
-		latitudes2.add(new Float(1.4));
-		latitudes2.add(new Float(9.4));
-		latitudes2.add(new Float(3.1));
-		latitudes2.add(new Float(6.7));
+		List<Double> latitudes2 = new ArrayList<Double>();
+		latitudes2.add(new Double(1.4));
+		latitudes2.add(new Double(9.4));
+		latitudes2.add(new Double(3.1));
+		latitudes2.add(new Double(6.7));
 		
-		List<Float> longitudes1 = new ArrayList<Float>();
-		longitudes1.add(new Float(10.2));
-		longitudes1.add(new Float(1.1));
-		longitudes1.add(new Float(3.3));
-		longitudes1.add(new Float(4.25));
+		List<Double> longitudes1 = new ArrayList<Double>();
+		longitudes1.add(new Double(10.2));
+		longitudes1.add(new Double(1.1));
+		longitudes1.add(new Double(3.3));
+		longitudes1.add(new Double(4.25));
 		
-		List<Float> longitudes2 = new ArrayList<Float>();
-		longitudes2.add(new Float(0.3));
-		longitudes2.add(new Float(2.5));
-		longitudes2.add(new Float(8.8));
-		longitudes2.add(new Float(5.3));
+		List<Double> longitudes2 = new ArrayList<Double>();
+		longitudes2.add(new Double(0.3));
+		longitudes2.add(new Double(2.5));
+		longitudes2.add(new Double(8.8));
+		longitudes2.add(new Double(5.3));
 		
 		ZonaDePatrulha zona1 = new ZonaDePatrulha("Centro", latitudes1, longitudes1);
 		ZonaDePatrulha zona2 = new ZonaDePatrulha("Agronomia", latitudes2,longitudes2);
@@ -152,6 +152,13 @@ public class SimulacaoControle{
 		ControleEmpSingleton.getInstance().criaNovoDrone();
 		ControleEmpSingleton.getInstance().criaNovoDrone();
 		ControleEmpSingleton.getInstance().criaNovoDrone();
+		
+		ControleEmpSingleton.getInstance().setZona("Agronomia", 0);
+		ControleEmpSingleton.getInstance().setZona("Centro", 1);
+		ControleEmpSingleton.getInstance().setZona("Ipanema", 2);
+		ControleEmpSingleton.getInstance().setZona("Agronomia", 3);
+		ControleEmpSingleton.getInstance().setZona("Navegantes", 4);
+		ControleEmpSingleton.getInstance().setZona("Centro", 5);
 		
 		ControleEmpSingleton.getInstance().criaNovaTornozeleira();
 		ControleEmpSingleton.getInstance().criaNovaTornozeleira();

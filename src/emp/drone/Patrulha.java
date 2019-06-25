@@ -7,7 +7,8 @@ import emp.persistencia.ZonaDePatrulha;
 
 public class Patrulha {
 	private int identificador;
-	private List<Float> area;
+	private List<Double> limitesx;
+	private List<Double> limitesy;
 	private int duracao;
 	private List<Pessoa> detectados;
 	
@@ -15,12 +16,12 @@ public class Patrulha {
 		return detectados;
 	}
 	
-	public Patrulha(List<Float> area, int duracao) {
-		this.setAreaInicial(area);
+	public Patrulha(List<Double> limitesx, List<Double> limitesy, int duracao) {
+		this.setArea(limitesx, limitesy);
 		this.setDuracao(duracao);
 	}
 	
-	private void setId(int identPatrulha) {
+	private void setId(int identificador) {
 		this.identificador = identificador;
 		
 	}
@@ -30,8 +31,9 @@ public class Patrulha {
 		
 	}
 
-	private void setAreaInicial(List<Float> areaInicial) {
-		this.area = areaInicial;
+	private void setArea(List<Double> x, List<Double> y) {
+		this.limitesx = x;
+		this.limitesy = y;
 		
 	}
 
