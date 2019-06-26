@@ -139,7 +139,7 @@ public class TornozeleiraUI {
 	public void printTornozeleira(String nome, String carga, String posx, String posy, String bpm, String potencia) {
 		lblNomeDoDetento.setText("Nome do Detento : ".concat(nome));
 		label_4.setText("Posi\u00E7\u00E3o Atual : ".concat(posx).concat(" , ").concat(posy));
-		lblAtividadeCardacaXxx.setText("Atividade card\\u00EDaca : ".concat(bpm).concat(" bpm"));
+		lblAtividadeCardacaXxx.setText("Atividade card\u00EDaca : ".concat(bpm).concat(" bpm"));
 		lblCargaDaBateria.setText("Carga da bateria : ".concat(carga).concat("%"));
 		lblChoqueDesativado.setText("Choque desativado (".concat(potencia).concat("V)"));
 

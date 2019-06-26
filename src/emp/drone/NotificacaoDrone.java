@@ -70,6 +70,16 @@ public class NotificacaoDrone implements Mensagem {
 	public void setZona(ZonaDeAtividade z) {
 		this.drone.setZona(z);
 	}
+
+	public void configuraDrone(int idDrone, StatusDrone s, ZonaDeAtividade zona, int duracao) {
+		if(this.drone.getStatus_() == StatusDrone.IDLE) {
+			this.drone.setStatus(s);
+			this.drone.setZona(zona);
+			this.drone.setPatrulha(new Patrulha(zona.getLatitudes(), zona.getLongitudes(), duracao));
+		}
+		
+	}
+
 	
 
 }

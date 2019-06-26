@@ -3,6 +3,7 @@ package emp.controle;
 import java.util.ArrayList;
 import java.util.List;
 
+import emp.drone.StatusDrone;
 import emp.persistencia.Detento;
 import emp.persistencia.Policial;
 import emp.persistencia.ZonaDeAtividade;
@@ -106,6 +107,12 @@ public class Business {
 	public void setDetentoTornozeleira(String cpf, int idTornozeleira) {
 		Detento d = getDetentoPeloCpf(cpf);
 		this.notificacao.setDetentoTornozeleira(d, idTornozeleira);
+	}
+
+	public void configuraDrone(int idDrone, StatusDrone s, String nomeZona, int duracao) {
+		ZonaDeAtividade z = getZonaPeloNome(nomeZona);
+		this.notificacao.setConfiguracaoDrone(idDrone, s, z, duracao);
+		
 	}
 	
 	

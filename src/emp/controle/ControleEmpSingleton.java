@@ -1,5 +1,6 @@
 package emp.controle;
 
+import emp.drone.StatusDrone;
 import emp.persistencia.DAOEmp;
 
 public class ControleEmpSingleton {
@@ -57,6 +58,10 @@ public class ControleEmpSingleton {
 
 	public void setDetentoTornozeleira(String cpf, int idTornozeleira) {
 		this.b.setDetentoTornozeleira(cpf, idTornozeleira);
+	}
+	
+	public void configurarDrone(int idDrone, StatusDrone s, String nomeZona, int duracao) {
+		this.b.configuraDrone(idDrone,s,nomeZona,duracao);
 	}
 	
 }

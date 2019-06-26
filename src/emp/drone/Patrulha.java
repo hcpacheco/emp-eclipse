@@ -37,6 +37,10 @@ public class Patrulha {
 		
 	}
 
+	public int getDuracao() {
+		return duracao;
+	}
+
 	public boolean cancelarPatrulha() {
 		return true;
 	}

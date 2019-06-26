@@ -43,6 +43,10 @@ public class DroneFacade {
 	public String getStatus() {
 		return status.name();
 	}
+	
+	public StatusDrone getStatus_() {
+		return status;
+	} 
 
 	public void setStatus(StatusDrone status) {
 		this.status = status;

@@ -7,6 +7,7 @@ import java.util.List;
 import emp.Mensagem;
 import emp.drone.DroneFacade;
 import emp.drone.NotificacaoDrone;
+import emp.drone.StatusDrone;
 import emp.persistencia.Detento;
 import emp.persistencia.ZonaDeAtividade;
 import emp.tornozeleira.NotificacaoTornozeleira;
@@ -139,8 +140,15 @@ public class Notificacao implements Mensagem {
 			if (tornozeleirasI.get(i).getId() == idTornozeleira) {
 				tornozeleirasI.get(i).setDetento(d);
 			}
+		}	
+	}
+
+	public void setConfiguracaoDrone(int idDrone, StatusDrone s, ZonaDeAtividade zona, int duracao) {
+		for (int i = 0; i < dronesI.size(); i++) {
+			if (dronesI.get(i).getId() == idDrone) {
+				dronesI.get(i).configuraDrone(idDrone, s, zona, duracao);
+			}
 		}
-		
 	}
 
 }
