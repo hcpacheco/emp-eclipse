@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Detento extends Pessoa
 {
-	private List<Float> posicoes;
+	private List<Double> posicoes;
 	private int atividadeCardiaca;
 
-	public List<Float> getPosicoes() {
+	public List<Double> getPosicoes() {
 		return posicoes;
 	}
-	public void setPosicoes(List<Float> posicoes) {
+	public void setPosicoes(List<Double> posicoes) {
 		this.posicoes = posicoes;
 	}
 	public int getAtividadeCardiaca() {
@@ -27,9 +27,19 @@ public class Detento extends Pessoa
 	this.setAtividadeCardiaca(0);
 	}
 	
-	public Detento(String nome, Date d, Sexo s, String cpf,List<Float> posicoes, int atividadeCardiaca) {
+	public Detento(String nome, Date d, Sexo s, String cpf,List<Double> posicoes, int atividadeCardiaca) {
 		super(nome, d, s, cpf);
 		this.setPosicoes(posicoes);
+		this.setAtividadeCardiaca(atividadeCardiaca);
+		
+	}
+	
+	public Detento(String nome, Date d, Sexo s, String cpf) {
+		super(nome, d, s, cpf);
+		this.setPosicoes(null);
+		//sorteia atividade cardiaca
+		int random = (int) (Math.random() * 30 + 1);
+		int atividadeCardiaca = (50 + random);
 		this.setAtividadeCardiaca(atividadeCardiaca);
 		
 	}

@@ -23,10 +23,10 @@ public class SimulacaoControle{
 		// inicializacao de 'Banco de Dados'
 
 		// ArraList e posicoes
-		List<Float> posicoes = new ArrayList<Float>();
-		posicoes.add(new Float(10.2));
-		posicoes.add(new Float(1.1));
-		posicoes.add(new Float(3.3));
+		List<Double> posicoes = new ArrayList<Double>();
+		posicoes.add(new Double(10.2));
+		posicoes.add(new Double(1.1));
+		posicoes.add(new Double(3.3));
 
 		// Data de nascimento
 		Date data1 = new Date();

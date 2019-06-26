@@ -131,9 +131,9 @@ public class ConfigurarDroneUI {
 				
 				int idDrone = spinner.getSelection();
 				
-				System.out.println(s);
-				System.out.println(nomeZona);
-				System.out.println(duracao);
+//				System.out.println(s);
+//				System.out.println(nomeZona);
+//				System.out.println(duracao);
 				ControleEmpSingleton.getInstance().configurarDrone(idDrone, s, nomeZona, duracao);
 
 				

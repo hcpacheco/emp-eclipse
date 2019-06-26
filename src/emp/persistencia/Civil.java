@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Civil extends Pessoa
 {
-	private List<Float> posicoes;
+	private List<Double> posicoes;
 	private boolean suspeito;
 	private boolean conhecido;
 	
-	public List<Float> getPosicoes() 
+	public List<Double> getPosicoes() 
 	{
 		return posicoes;
 	}
 	
-	public void setPosicoes(List<Float> posicoes) 
+	public void setPosicoes(List<Double> posicoes) 
 	{
 		this.posicoes = posicoes;
 	}
@@ -39,7 +39,7 @@ public class Civil extends Pessoa
 		this.conhecido = conhecido;
 	}
 
-	public Civil(String nome, Date d, Sexo s, String cpf, List<Float> posicoes, boolean suspeito) {
+	public Civil(String nome, Date d, Sexo s, String cpf, List<Double> posicoes, boolean suspeito) {
 		
 		super(nome,d,s,cpf);
 		this.setPosicoes(posicoes);
@@ -47,7 +47,7 @@ public class Civil extends Pessoa
 		this.setConhecido(true);
 	}
 
-	public Civil(List<Float> posicoes, boolean suspeito) {
+	public Civil(List<Double> posicoes, boolean suspeito) {
 		super();
 		this.setPosicoes(posicoes);
 		this.setSuspeito(suspeito);

@@ -10,6 +10,7 @@ public class TornozeleiraFacade {
 	private ZonaDeAtividade zona;
 	private Detento	detento;
 	private int carga;
+	private StatusTornozeleira status;
 
 	public TornozeleiraFacade() {
 		super();
@@ -17,6 +18,7 @@ public class TornozeleiraFacade {
 		this.setChoque(new ControleChoque(100, 50));
 		this.setZona(new ZonaDeAtividade());
 		this.setDetento(new Detento());
+		this.setStatus(StatusTornozeleira.IDLE);
 		
 		int random = (int) (Math.random() * 40 + 1);
 		this.setCarga(50 + random);
@@ -66,9 +68,13 @@ public class TornozeleiraFacade {
 		this.zona = zona;
 	}
 
-//	public String getTornozeleira() {
-//		
-//	}
+	public StatusTornozeleira getStatus() {
+		return this.status;
+	}
+	
+	public void setStatus(StatusTornozeleira s) {
+		this.status = s;
+	}
 	
 	public int getCarga() {
 		return this.carga;

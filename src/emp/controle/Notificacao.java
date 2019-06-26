@@ -11,6 +11,7 @@ import emp.drone.StatusDrone;
 import emp.persistencia.Detento;
 import emp.persistencia.ZonaDeAtividade;
 import emp.tornozeleira.NotificacaoTornozeleira;
+import emp.tornozeleira.StatusTornozeleira;
 import emp.tornozeleira.TornozeleiraFacade;
 
 public class Notificacao implements Mensagem {
@@ -149,6 +150,15 @@ public class Notificacao implements Mensagem {
 				dronesI.get(i).configuraDrone(idDrone, s, zona, duracao);
 			}
 		}
+	}
+
+	public void setConfiguracaoTornozeleira(int idTornozeleira, StatusTornozeleira s, Detento d) {
+		for (int i = 0; i < tornozeleirasI.size(); i++) {
+			if (tornozeleirasI.get(i).getId() == idTornozeleira) {
+				tornozeleirasI.get(i).configuraTornozeleira(s, d);
+			}
+		}	
+		
 	}
 
 }

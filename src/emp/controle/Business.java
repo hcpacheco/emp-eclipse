@@ -7,6 +7,7 @@ import emp.drone.StatusDrone;
 import emp.persistencia.Detento;
 import emp.persistencia.Policial;
 import emp.persistencia.ZonaDeAtividade;
+import emp.tornozeleira.StatusTornozeleira;
 
 public class Business {
 
@@ -112,6 +113,16 @@ public class Business {
 	public void configuraDrone(int idDrone, StatusDrone s, String nomeZona, int duracao) {
 		ZonaDeAtividade z = getZonaPeloNome(nomeZona);
 		this.notificacao.setConfiguracaoDrone(idDrone, s, z, duracao);
+		
+	}
+
+	public void configuraTornozeleira(int idTornozeleira, StatusTornozeleira s, Detento d, String cpfDetento) {
+		Detento d2 = getDetentoPeloCpf(cpfDetento);
+		if(d2 == null) {
+			this.detentos.add(d);
+			this.notificacao.setConfiguracaoTornozeleira(idTornozeleira, s, d);
+		}
+		
 		
 	}
 	

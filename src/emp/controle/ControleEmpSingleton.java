@@ -2,6 +2,8 @@ package emp.controle;
 
 import emp.drone.StatusDrone;
 import emp.persistencia.DAOEmp;
+import emp.persistencia.Detento;
+import emp.tornozeleira.StatusTornozeleira;
 
 public class ControleEmpSingleton {
 	private Business b;
@@ -62,6 +64,11 @@ public class ControleEmpSingleton {
 	
 	public void configurarDrone(int idDrone, StatusDrone s, String nomeZona, int duracao) {
 		this.b.configuraDrone(idDrone,s,nomeZona,duracao);
+	}
+
+	public void configurarTornozeleira(int idTornozeleira, StatusTornozeleira s, Detento d, String cpfDetento) {
+		this.b.configuraTornozeleira(idTornozeleira, s, d, cpfDetento);
+		
 	}
 	
 }

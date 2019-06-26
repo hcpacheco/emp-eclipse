@@ -72,4 +72,12 @@ public class NotificacaoTornozeleira implements Mensagem {
 	public void setDetento(Detento d) {
 		this.tornozeleira.setDetento(d);
 	}
+
+	public void configuraTornozeleira(StatusTornozeleira s, Detento d) {
+		if(this.tornozeleira.getStatus() == StatusTornozeleira.IDLE) {
+			this.tornozeleira.setStatus(s);
+			this.tornozeleira.setDetento(d);
+		}
+		
+	}
 }
