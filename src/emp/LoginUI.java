@@ -113,9 +113,6 @@ public class LoginUI {
 				System.out.println(pw);
 				if (ControleEmpSingleton.getInstance().validarSenha(name, pw)) {
 					shell.close();
-
-					EmpUI window = new EmpUI();
-					window.open();
 				} else {
 					lblBemVindoa.setText("Login ou senha inválido. Por favor, tente novamente.");
 					lblBemVindoa.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));

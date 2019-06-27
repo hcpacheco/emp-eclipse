@@ -8,11 +8,11 @@ public class ZonaDeAtividade {
 	private List<Double> latitudes;//= new ArrayList();
 	private List<Double> longitudes;// = new ArrayList();
 	
-	public List getLatitudes() {
+	public List<Double> getLatitudes() {
 		return latitudes;
 	}
 	
-	public List getLongitudes() {
+	public List<Double> getLongitudes() {
 		return longitudes;
 	}
 	

@@ -6,7 +6,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
 import org.eclipse.wb.swt.SWTResourceManager;
 
+import com.ibm.icu.math.BigDecimal;
+
 import emp.controle.ControleEmpSingleton;
+import emp.simulacao.SimulacaoControle;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Text;
@@ -15,6 +18,10 @@ import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.forms.widgets.FormToolkit;
+
+import java.math.RoundingMode;
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.JTable;
 import org.eclipse.swt.events.ShellAdapter;
 import org.eclipse.swt.events.ShellEvent;
@@ -29,12 +36,17 @@ public class DroneUI {
 	private Label lblPosioXxxxxx;
 	private Label lblStatusAtualXxxxx;
 	private Label lblNvelDeBateria;
+	private EmpUI emp;
+	private Label lblDuracaoPatrulha;
+	private Button btnRadioButton;
+	private Spinner spinner;
 
 	/**
 	 * Launch the application.
 	 * 
 	 * @param args
 	 */
+	
 	public static void main(String[] args) {
 		try {
 			DroneUI window = new DroneUI();
@@ -48,6 +60,7 @@ public class DroneUI {
 	 * Open the window.
 	 */
 	public void open() {
+		this.emp = emp;
 		Display display = Display.getDefault();
 		createContents(0);
 		shell.open();
@@ -75,15 +88,9 @@ public class DroneUI {
 		String carga = mensagemArray[2];
 		String posx = mensagemArray[3];
 		String posy = mensagemArray[4];
+		String duracao = mensagemArray[5];
 		
-//		System.out.println(idDrone);
-//		System.out.println(status);
-//		System.out.println(carga);
-//		System.out.println(posx);
-//		System.out.println(posy);
-//		System.out.println("teste");
-		
-		shell.setSize(420, 330);
+		shell.setSize(420, 400);
 		shell.setText("Drone");
 		shell.setLayout(null);
 
@@ -93,6 +100,16 @@ public class DroneUI {
 		lblDroneSimulador.setBounds(140, 11, 129, 15);
 
 		Button btnNewButton = new Button(shell, SWT.NONE);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				String nome = text.getText();
+				boolean suspeito = btnRadioButton.getSelection();
+				int idDrone = spinner.getSelection();
+				
+				SimulacaoControle.printNotificacaoDrone(idDrone, nome, suspeito);
+			}
+		});
 		btnNewButton.setBounds(124, 121, 153, 25);
 		btnNewButton.setText("Detectar");
 
@@ -109,14 +126,14 @@ public class DroneUI {
 		lblNome.setBounds(23, 60, 55, 15);
 		lblNome.setText("Nome :");
 
-		Button btnRadioButton = new Button(shell, SWT.RADIO);
+		btnRadioButton = new Button(shell, SWT.RADIO);
 		btnRadioButton.setBounds(159, 84, 71, 16);
 		btnRadioButton.setText("Suspeito");
 
 		Label label_2 = new Label(shell, SWT.SEPARATOR | SWT.HORIZONTAL);
 		label_2.setBounds(0, 162, 414, 2);
 
-		Spinner spinner = new Spinner(shell, SWT.BORDER);
+		spinner = new Spinner(shell, SWT.BORDER);
 		spinner.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
@@ -128,7 +145,8 @@ public class DroneUI {
 				String carga = mensagemArray[2];
 				String posx = mensagemArray[3];
 				String posy = mensagemArray[4];
-				printDrone(zona, posx, posy, status, carga);
+				String duracao = mensagemArray[5];
+				printDrone(zona, posx, posy, status, carga, duracao);
 				
 //				System.out.println("teste");
 //				lblPosioXxxxxx.setText("o");
@@ -162,23 +180,90 @@ public class DroneUI {
 		lblNvelDeBateria.setText("Carga da bateria : XX%");
 		lblNvelDeBateria.setBounds(84, 250, 193, 15);
 		
-		printDrone(zona, posx, posy, status, carga);
-//		lblNewLabel_1.setText("Zona Atual : ".concat("Agronomia"));
-//		lblPosioXxxxxx.setText("Posi\u00E7\u00E3o Atual : ".concat(posx).concat(" , ").concat(posy));
-//		lblStatusAtualXxxxx.setText("Status : ".concat(status));
-//		lblNvelDeBateria.setText("Carga da bateria : ".concat(carga).concat("%"));
+		Button btnSimular = new Button(shell, SWT.NONE);
+		btnSimular.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				String mensagem = ControleEmpSingleton.getInstance().getDrone(spinner.getSelection());
+				String[] mensagemArray = mensagem.split(";", -1);
+				String zona = mensagemArray[0];
+				String status = mensagemArray[1];
+				String carga = mensagemArray[2];
+				String posx = mensagemArray[3];
+				String posy = mensagemArray[4];
+				String duracao = mensagemArray[5];
+				
+				int d = Integer.parseInt(duracao);
+				
+				simulaEstadoDrone(d);
+
+				
+				
+			}
+		});
+		btnSimular.setText("Simular");
+		btnSimular.setBounds(124, 326, 153, 25);
+		
+		lblDuracaoPatrulha = new Label(shell, SWT.NONE);
+		lblDuracaoPatrulha.setText("Tempo restante: Xh");
+		lblDuracaoPatrulha.setBounds(84, 271, 193, 15);
+		
+		printDrone(zona, posx, posy, status, carga, duracao);
 
 
 
 	}
 	
 	
-	public void printDrone(String zona, String posx, String posy, String status, String carga ) {
-//		System.out.println(carga);
+	public void printDrone(String zona, String posx, String posy, String status, String carga, String duracao ) {
+
+		posx = truncaXY(posx);
+		posy = truncaXY(posy);
 		lblNewLabel_1.setText("Zona Atual : ".concat(zona));
 		lblPosioXxxxxx.setText("Posi\u00E7\u00E3o Atual : ".concat(posx).concat(" , ").concat(posy));
 		lblStatusAtualXxxxx.setText("Status : ".concat(status));
 		lblNvelDeBateria.setText("Carga da bateria : ".concat(carga).concat("%"));
-
+		lblDuracaoPatrulha.setText("Tempo restante: ".concat(duracao).concat("h"));
 	}
+	
+	public void simulaEstadoDrone(int d) {
+		int it = d;
+		String status = "";
+		while (!(status.equals("IDLE")))
+		{
+			//wait
+			
+			try {
+				TimeUnit.SECONDS.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			ControleEmpSingleton.getInstance().alteraEstadoDrone(spinner.getSelection());
+			String mensagem = ControleEmpSingleton.getInstance().getDrone(spinner.getSelection());
+			String[] mensagemArray = mensagem.split(";", -1);
+			String zona = mensagemArray[0];
+			status = mensagemArray[1];
+			String carga = mensagemArray[2];
+			String posx = mensagemArray[3];
+			String posy = mensagemArray[4];
+			String duracao = mensagemArray[5];
+			printDrone(zona, posx, posy, status, carga, duracao);
+			
+			it = Integer.parseInt(duracao);
+		}
+		
+	}
+	
+	public String truncaXY(String pos) {
+		if (pos.length() > 4)
+		{
+		    pos = pos.substring(0, 4);
+		}
+		return pos;
+	}
+	
+	
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.eclipse.swt.widgets.Display;
 
+import emp.EmpUI;
 import emp.LoginUI;
 import emp.controle.ControleEmpSingleton;
 import emp.persistencia.Civil;
@@ -18,7 +19,8 @@ import emp.persistencia.Sexo;
 import emp.persistencia.ZonaDeAtividade;
 
 public class SimulacaoControle{
-
+	static EmpUI window2;
+	
 	public static void main(String[] args) {
 		// inicializacao de 'Banco de Dados'
 
@@ -147,6 +149,7 @@ public class SimulacaoControle{
 		
 		//Inicialização de ControleEmpSingleton db
 		ControleEmpSingleton.getInstance().setDAO(d);
+
 		
 		ControleEmpSingleton.getInstance().criaNovoDrone();
 		ControleEmpSingleton.getInstance().criaNovoDrone();
@@ -180,9 +183,20 @@ public class SimulacaoControle{
 //		System.out.println(ControleEmpSingleton.getInstance().getDrone(2));
 
 		
-		LoginUI window = new LoginUI();
-		window.open();
+		LoginUI window1 = new LoginUI();
+		window1.open();
+		
+		window2 = new EmpUI();
+		window2.open();
 		
 	} 
+	
+	public static void printNotificacaoDrone(int idDrone, String nome, boolean suspeito){
+		window2.printNotificacaoDrone(idDrone, nome, suspeito);
+	}
+	
+	public static void printNotificacaoTornozeleira(int idTornozeleira, String nome, boolean remocao){
+		window2.printNotificacaoTornozeleira(idTornozeleira, nome, remocao);
+	}
 
 }

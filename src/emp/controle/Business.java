@@ -125,6 +125,10 @@ public class Business {
 		
 		
 	}
+
+	public void alteraEstadoDrone(int id) {
+		this.notificacao.alteraEstadoDrone(id);
+	}
 	
 	
 

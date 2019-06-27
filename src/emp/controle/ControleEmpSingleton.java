@@ -50,6 +50,10 @@ public class ControleEmpSingleton {
 		return this.b.getDrone(id);
 	}
 	
+	public void alteraEstadoDrone(int id) {
+		this.b.alteraEstadoDrone(id);
+	}
+	
 	public String getTornozeleira(int id) {
 		return this.b.getTornozeleira(id);
 	}

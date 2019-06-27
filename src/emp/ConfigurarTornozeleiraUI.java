@@ -31,6 +31,7 @@ public class ConfigurarTornozeleiraUI {
 	private Button btnRadioButton;
 	private Button btnRadioButton_1;
 	private Spinner spinner;
+//	private EmpUI emp;
 
 	/**
 	 * Launch the application.

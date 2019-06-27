@@ -160,5 +160,13 @@ public class Notificacao implements Mensagem {
 		}	
 		
 	}
+	
+	public void alteraEstadoDrone(int idDrone) {
+		for (int i = 0; i < dronesI.size(); i++) {
+			if (dronesI.get(i).getId() == idDrone) {
+				dronesI.get(i).alteraEstado(idDrone);
+			}
+		}
+	}
 
 }

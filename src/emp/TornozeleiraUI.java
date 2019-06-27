@@ -7,6 +7,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import emp.controle.ControleEmpSingleton;
+import emp.simulacao.SimulacaoControle;
 
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Button;
@@ -104,6 +105,23 @@ public class TornozeleiraUI {
 		label_2.setBounds(0, 168, 414, 2);
 
 		Button btnNewButton = new Button(shell, SWT.NONE);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				String mensagem = ControleEmpSingleton.getInstance().getTornozeleira(spinner.getSelection());
+				String[] mensagemArray = mensagem.split(";", -1);
+				String det = mensagemArray[0];
+				String carga = mensagemArray[1];
+				String posx = mensagemArray[2];
+				String posy = mensagemArray[3];
+				String bpm = mensagemArray[4];
+				
+
+				SimulacaoControle.printNotificacaoTornozeleira(spinner.getSelection(), det, true);
+
+				
+			}
+		});
 		btnNewButton.setBounds(96, 71, 198, 25);
 		btnNewButton.setText("Detectar tentativa de remo\u00E7\u00E3o");
 

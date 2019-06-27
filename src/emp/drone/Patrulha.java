@@ -21,12 +21,12 @@ public class Patrulha {
 		this.setDuracao(duracao);
 	}
 	
-	private void setId(int identificador) {
+	public void setId(int identificador) {
 		this.identificador = identificador;
 		
 	}
 
-	private void setDuracao(int duracao) {
+	public void setDuracao(int duracao) {
 		this.duracao = duracao;
 		
 	}
@@ -47,5 +47,9 @@ public class Patrulha {
 	
 	public boolean iniciarPatrulha() {
 		return true;
+	}
+
+	public void atualizaPosicao() {
+		
 	}	
 }

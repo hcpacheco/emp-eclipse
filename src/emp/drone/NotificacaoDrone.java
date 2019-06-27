@@ -36,7 +36,8 @@ public class NotificacaoDrone implements Mensagem {
 		String status = drone.getStatus();
 		String posx = Double.toString(drone.getPosx());
 		String posy = Double.toString(drone.getPosy());
-		String mensagem = zona.concat(";").concat(status).concat(";").concat(carga).concat(";").concat(posx).concat(";").concat(posy);
+		String duracao = Integer.toString(drone.getDuracao());
+		String mensagem = zona.concat(";").concat(status).concat(";").concat(carga).concat(";").concat(posx).concat(";").concat(posy).concat(";").concat(duracao);
 		System.out.println(mensagem);
 //		return drone.getCarga();
 		List<String> tx = new ArrayList<>();
@@ -78,6 +79,12 @@ public class NotificacaoDrone implements Mensagem {
 			this.drone.setPatrulha(new Patrulha(zona.getLatitudes(), zona.getLongitudes(), duracao));
 		}
 		
+	}
+
+	public void alteraEstado(int idDrone) {
+		if(this.drone.getStatus_() != StatusDrone.IDLE) {
+			this.drone.alteraEstado();
+		}
 	}
 
 	

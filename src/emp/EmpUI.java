@@ -19,6 +19,8 @@ import org.eclipse.swt.events.SelectionEvent;
 public class EmpUI {
 
 	protected Shell shell;
+	private Label label_5;
+	private Label label_2;
 
 	/**
 	 * Launch the application.
@@ -65,7 +67,7 @@ public class EmpUI {
 		Label label_1 = new Label(shell, SWT.SEPARATOR | SWT.HORIZONTAL);
 		label_1.setBounds(0, 72, 414, 2);
 		
-		Label label_2 = new Label(shell, SWT.BORDER | SWT.WRAP);
+		label_2 = new Label(shell, SWT.BORDER | SWT.WRAP);
 		label_2.setText("Notifica\u00E7\u00E3o: Suspeito identificado (Zona central)");
 		label_2.setAlignment(SWT.CENTER);
 		label_2.setBounds(10, 101, 394, 25);
@@ -106,7 +108,7 @@ public class EmpUI {
 		Label label_4 = new Label(shell, SWT.SEPARATOR | SWT.HORIZONTAL);
 		label_4.setBounds(0, 218, 414, 2);
 		
-		Label label_5 = new Label(shell, SWT.BORDER | SWT.WRAP);
+		label_5 = new Label(shell, SWT.BORDER | SWT.WRAP);
 		label_5.setText("Notifica\u00E7\u00E3o: Tornozeleira 0187 detectou atividade at\u00EDpica (Jo\u00E3o da Silva)");
 		label_5.setAlignment(SWT.CENTER);
 		label_5.setBounds(10, 247, 394, 25);
@@ -138,6 +140,45 @@ public class EmpUI {
 		lblEcossistemaDeMonitoramento.setFont(SWTResourceManager.getFont("Segoe UI", 10, SWT.BOLD));
 		lblEcossistemaDeMonitoramento.setAlignment(SWT.CENTER);
 		lblEcossistemaDeMonitoramento.setBounds(78, 12, 252, 15);
+
+	}
+
+	public void printNotificacaoDrone(int idDrone, String nome, boolean suspeito) {
+		String mensagem = ControleEmpSingleton.getInstance().getDrone(idDrone);
+		String[] mensagemArray = mensagem.split(";", -1);
+		String zona = mensagemArray[0];
+		String status = mensagemArray[1];
+		String carga = mensagemArray[2];
+		String posx = mensagemArray[3];
+		String posy = mensagemArray[4];
+		String duracao = mensagemArray[5];
+		if(suspeito) {
+			label_2.setText("Alerta: ".concat(nome).concat(" identificado(a)").concat(" na Zona ").concat(zona));
+			label_2.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+		}
+		else {
+			label_2.setText("Civil: ".concat(nome).concat(" identificado(a)").concat(" na Zona ").concat(zona));
+		}
+	}
+
+	public void printNotificacaoTornozeleira(int idTornozeleira, String nome, boolean remocao) {
+		String mensagem = ControleEmpSingleton.getInstance().getTornozeleira(idTornozeleira);
+		String[] mensagemArray = mensagem.split(";", -1);
+		String det = mensagemArray[0];
+		String carga = mensagemArray[1];
+		String posx = mensagemArray[2];
+		String posy = mensagemArray[3];
+		String bpm = mensagemArray[4];
+		String potencia = mensagemArray[5];
+		
+		if(remocao) {
+			label_5.setText("Notifica\u00E7\u00E3o: Tornozeleira ".concat(Integer.toString(idTornozeleira)).concat(" detectou tentativa de remocao (").concat(nome).concat(")"));
+
+		}
+		else {
+			label_5.setText("Notifica\u00E7\u00E3o: Tornozeleira 0187 detectou atividade at\u00EDpica (Jo\u00E3o da Silva)");
+
+		}
 
 	}
 }
