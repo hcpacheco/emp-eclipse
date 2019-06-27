@@ -74,5 +74,9 @@ public class ControleEmpSingleton {
 		this.b.configuraTornozeleira(idTornozeleira, s, d, cpfDetento);
 		
 	}
+
+	public void setPosicaoProibidaTornozeleira(int idTornozeleira) {
+		this.b.setPosicaoProibidaTornozeleira(idTornozeleira);		
+	}
 	
 }

@@ -1,5 +1,7 @@
 package emp.tornozeleira;
 
+import java.util.Random;
+
 import emp.persistencia.Detento;
 import emp.persistencia.ZonaDeAtividade;
 
@@ -14,9 +16,9 @@ public class TornozeleiraFacade {
 
 	public TornozeleiraFacade() {
 		super();
-		this.setGps(new GPSTornozeleira(0.0, 0.0));
-		this.setChoque(new ControleChoque(100, 50));
-		this.setZona(new ZonaDeAtividade());
+		this.setGps(new GPSTornozeleira());
+		this.setChoque(new ControleChoque());
+		this.zona = new ZonaDeAtividade();
 		this.setDetento(new Detento());
 		this.setStatus(StatusTornozeleira.IDLE);
 		
@@ -62,10 +64,17 @@ public class TornozeleiraFacade {
 
 	public ZonaDeAtividade getZona() {
 		return zona;
+		
 	}
 
 	public void setZona(ZonaDeAtividade zona) {
 		this.zona = zona;
+		
+		//atualiza posicao do gps
+		Double x = zona.getLatitudes().get(0);
+		Double y = zona.getLongitudes().get(1);
+		this.getGps().setPosx(x);
+		this.getGps().setPosy(y);
 	}
 
 	public StatusTornozeleira getStatus() {
@@ -78,5 +87,10 @@ public class TornozeleiraFacade {
 	
 	public int getCarga() {
 		return this.carga;
+	}
+
+	public void setPosicaoProibida() {
+		this.getGps().setPosProibida();
+		
 	}
 }

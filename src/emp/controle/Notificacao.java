@@ -169,4 +169,14 @@ public class Notificacao implements Mensagem {
 		}
 	}
 
+	public void setPosicaoProibidaTornozeleira(int idTornozeleira) {
+		for (int i = 0; i < tornozeleirasI.size(); i++) {
+			if (tornozeleirasI.get(i).getId() == idTornozeleira) {
+				tornozeleirasI.get(i).setPosicaoProibidaTornozeleira();
+			}
+		}	
+		
+	}
+
+
 }

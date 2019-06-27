@@ -80,4 +80,9 @@ public class NotificacaoTornozeleira implements Mensagem {
 		}
 		
 	}
+
+	public void setPosicaoProibidaTornozeleira() {
+		this.tornozeleira.setPosicaoProibida();
+		
+	}
 }

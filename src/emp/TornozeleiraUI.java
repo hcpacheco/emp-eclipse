@@ -126,6 +126,23 @@ public class TornozeleiraUI {
 		btnNewButton.setText("Detectar tentativa de remo\u00E7\u00E3o");
 
 		Button btnDetectarPosioProibida = new Button(shell, SWT.NONE);
+		btnDetectarPosioProibida.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				ControleEmpSingleton.getInstance().setPosicaoProibidaTornozeleira(spinner.getSelection());
+				
+				String mensagem = ControleEmpSingleton.getInstance().getTornozeleira(spinner.getSelection());
+				String[] mensagemArray = mensagem.split(";", -1);
+				String det = mensagemArray[0];
+				String carga = mensagemArray[1];
+				String posx = mensagemArray[2];
+				String posy = mensagemArray[3];
+				String bpm = mensagemArray[4];
+				printTornozeleira(det, carga, posx, posy, bpm, potencia);
+				
+				SimulacaoControle.printNotificacaoTornozeleira(spinner.getSelection(), det, false);
+			}
+		});
 		btnDetectarPosioProibida.setText("Detectar posi\u00E7\u00E3o proibida");
 		btnDetectarPosioProibida.setBounds(96, 115, 198, 25);
 
@@ -155,12 +172,22 @@ public class TornozeleiraUI {
 	}
 
 	public void printTornozeleira(String nome, String carga, String posx, String posy, String bpm, String potencia) {
+		posx = truncaXY(posx);
+		posy = truncaXY(posy);
 		lblNomeDoDetento.setText("Nome do Detento : ".concat(nome));
 		label_4.setText("Posi\u00E7\u00E3o Atual : ".concat(posx).concat(" , ").concat(posy));
 		lblAtividadeCardacaXxx.setText("Atividade card\u00EDaca : ".concat(bpm).concat(" bpm"));
 		lblCargaDaBateria.setText("Carga da bateria : ".concat(carga).concat("%"));
 		lblChoqueDesativado.setText("Choque desativado (".concat(potencia).concat("V)"));
 
+	}
+	
+	public String truncaXY(String pos) {
+		if (pos.length() > 4)
+		{
+		    pos = pos.substring(0, 4);
+		}
+		return pos;
 	}
 
 }

@@ -172,7 +172,6 @@ public class SimulacaoControle{
 		ControleEmpSingleton.getInstance().setDetentoTornozeleira("0101", 0);
 		ControleEmpSingleton.getInstance().setDetentoTornozeleira("1010", 1);
 		ControleEmpSingleton.getInstance().setDetentoTornozeleira("8765", 2);
-
 		
 		ControleEmpSingleton.getInstance().getTornozeleira(0);
 		ControleEmpSingleton.getInstance().getTornozeleira(1);

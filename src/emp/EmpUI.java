@@ -173,11 +173,11 @@ public class EmpUI {
 		
 		if(remocao) {
 			label_5.setText("Notifica\u00E7\u00E3o: Tornozeleira ".concat(Integer.toString(idTornozeleira)).concat(" detectou tentativa de remocao (").concat(nome).concat(")"));
-
+			label_5.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
 		}
 		else {
-			label_5.setText("Notifica\u00E7\u00E3o: Tornozeleira 0187 detectou atividade at\u00EDpica (Jo\u00E3o da Silva)");
-
+			label_5.setText("Notifica\u00E7\u00E3o: Tornozeleira ".concat(Integer.toString(idTornozeleira)).concat(" detectou posicao proibida (").concat(nome).concat(")"));
+			
 		}
 
 	}
